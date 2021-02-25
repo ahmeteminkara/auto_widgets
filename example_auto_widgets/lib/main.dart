@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_widgets/auto_widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,7 +33,28 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("AutoWidget Plugin"), centerTitle: true),
-      body: _list,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _imageContextMenu,
+          _list,
+        ],
+      ),
+    );
+  }
+
+  get _imageContextMenu {
+    return AutoContextMenu(
+      width: 200,
+      height: 200,
+      child: Image.network(
+        'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg',
+        fit: BoxFit.cover,
+      ),
+      actions: [
+        AutoContextMenuAction(title: "Değiştir", icon: CupertinoIcons.repeat, onPressed: () {}),
+        AutoContextMenuAction(title: "Kaldır", icon: CupertinoIcons.delete_simple, onPressed: () {}),
+      ],
     );
   }
 
@@ -58,8 +80,8 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           AutoAlertDialog(
             context: context,
-            message: "AutoAlertDialog Message",
-            title: "AutoAlertDialog Title",
+            message: "Default Button",
+            title: "AutoAlertDialog Message",
             barrierDismissible: false,
           ).show();
         },
@@ -71,21 +93,19 @@ class _HomePageState extends State<HomePage> {
             AutoBottomSheetAction(title: "Seçenek 1", onPressed: () {}),
             AutoBottomSheetAction(title: "Seçenek 2", onPressed: () {}),
             AutoBottomSheetAction(title: "Seçenek 3", onPressed: () {}),
-            AutoBottomSheetAction(title: "İptal", onPressed: () {}, isCancel: true),
           ]).show();
         },
       ),
       OutlineButton(
         child: Text("AutoLoading"),
         onPressed: () {
-          AutoLoading(context: context, message: "AutoBottomSheet").show();
+          AutoLoading(context: context, message: "AutoLoading").show();
           Timer(Duration(seconds: 6), () => Navigator.pop(context));
         },
       ),
     ];
 
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Expanded(
       child: Wrap(
         runSpacing: 10,
         spacing: 10,
