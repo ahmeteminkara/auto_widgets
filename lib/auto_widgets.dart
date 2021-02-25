@@ -7,3 +7,6 @@ export 'package:auto_widgets/widgets/bottom_sheet/auto_bottom_sheet.dart';
 export 'package:auto_widgets/widgets/bottom_sheet/auto_bottom_sheet_action.dart';
 
 export 'package:auto_widgets/widgets/loading/auto_loading.dart';
+
+export 'package:auto_widgets/widgets/context_menu/auto_context_menu.dart';
+export 'package:auto_widgets/widgets/context_menu/auto_context_menu_action.dart';

@@ -9,9 +9,6 @@ class AutoBottomSheet {
   final String _message;
   final List<AutoBottomSheetAction> _actions;
 
-  List<AutoBottomSheetAction> _showedActions = List();
-  AutoBottomSheetAction _actionCancel;
-
   AutoBottomSheet({
     @required BuildContext context,
     @required String message,
@@ -32,10 +29,7 @@ class AutoBottomSheet {
       subtitle: Text(_message, style: TextStyle(fontWeight: FontWeight.w300)),
     ));
 
-    _showedActions.forEach((e) => tempList.add(e));
-
-    print("showedActions.length: ${_showedActions.length}");
-    print("tempList.length: ${tempList.length}");
+    _actions.forEach((e) => tempList.add(e));
 
     return showModalBottomSheet(
         context: _context,
@@ -49,26 +43,26 @@ class AutoBottomSheet {
   }
 
   get _ios {
+    List<Widget> tempList = List();
+    _actions.forEach((e) => tempList.add(e));
+    tempList.add(CupertinoActionSheetAction(
+      child: Text("Vazgeç"),
+      isDestructiveAction: true,
+      isDefaultAction: true,
+      onPressed: () => Navigator.pop(_context),
+    ));
+
     showCupertinoModalPopup(
       context: _context,
       builder: (BuildContext context) => CupertinoActionSheet(
         title: _title.isNotEmpty ? Text(_title) : null,
         message: Text(_message),
-        actions: _showedActions.map((e) => e).toList(),
+        actions: tempList.map((e) => e).toList(),
       ),
     );
   }
 
   void show() {
-    for (var btn in _actions) {
-      if (btn.isCancel) {
-        _actionCancel = btn;
-      } else {
-        _showedActions.add(btn);
-      }
-    }
-    if (_actionCancel != null) _showedActions.add(_actionCancel);
-
     Tools.isAndroid ? _android() : _ios();
   }
 }
