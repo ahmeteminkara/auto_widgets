@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       OutlineButton(
-        child: Text("AutoBottomSheet"),
+        child: Text("AutoLoading"),
         onPressed: () {
           AutoLoading(context: context, message: "AutoBottomSheet").show();
           Timer(Duration(seconds: 6), () => Navigator.pop(context));
