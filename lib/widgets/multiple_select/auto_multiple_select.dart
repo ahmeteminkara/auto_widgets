@@ -10,7 +10,6 @@ class AutoMultipleSelect {
   final List<String> _items;
   final List<String> selected;
   final Function(List<String> selectedList) onSelect;
-  
 
   AutoMultipleSelect({
     @required BuildContext context,
@@ -27,6 +26,8 @@ class AutoMultipleSelect {
   void show() {
     showModalBottomSheet(
         context: _context,
+        elevation: Tools.isAndroid ? 2 : 0,
+        backgroundColor: Tools.isAndroid ? Colors.white : Colors.transparent,
         builder: (BuildContext bc) {
           return AutoMultipleSelectWidget(_context, _items, selected, onSelect);
         });

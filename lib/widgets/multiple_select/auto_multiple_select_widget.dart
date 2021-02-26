@@ -31,13 +31,22 @@ class _AutoMultipleSelectWidgetState extends State<AutoMultipleSelectWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final w = Container(
       height: _height50,
       child: ListView.separated(
         itemCount: listTiles.length,
         itemBuilder: (context, index) => listTiles.elementAt(index),
         separatorBuilder: (context, index) => Divider(height: 1),
       ),
+    );
+
+    if (Tools.isAndroid) return w;
+
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      margin: EdgeInsets.all(10),
+      child: w,
     );
   }
 

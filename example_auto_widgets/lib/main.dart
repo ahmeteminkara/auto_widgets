@@ -29,6 +29,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Duration initialtimer = Duration();
   String selected;
   List<String> selectedList = [];
   bool status = false;
@@ -78,7 +79,7 @@ class _HomePageState extends State<HomePage> {
 
   get _list {
     List<Widget> btnList = [
-      OutlineButton(
+      OutlinedButton(
         child: Text("AutoAlertDialog"),
         onPressed: () {
           AutoAlertDialog(
@@ -93,7 +94,7 @@ class _HomePageState extends State<HomePage> {
           ).show();
         },
       ),
-      OutlineButton(
+      OutlinedButton(
         child: Text("AutoAlertDialog Default"),
         onPressed: () {
           AutoAlertDialog(
@@ -104,7 +105,7 @@ class _HomePageState extends State<HomePage> {
           ).show();
         },
       ),
-      OutlineButton(
+      OutlinedButton(
         child: Text("AutoBottomSheet"),
         onPressed: () {
           AutoBottomSheet(context: context, message: "AutoBottomSheet", title: "AutoAlertDialog Title", actions: [
@@ -114,14 +115,14 @@ class _HomePageState extends State<HomePage> {
           ]).show();
         },
       ),
-      OutlineButton(
+      OutlinedButton(
         child: Text("AutoLoading"),
         onPressed: () {
           AutoLoading(context: context, message: "AutoLoading").show();
           Timer(Duration(seconds: 6), () => Navigator.pop(context));
         },
       ),
-      OutlineButton(
+      OutlinedButton(
         child: Text(selected ?? "AutoSelectMenu"),
         onPressed: () {
           AutoSingleSelect(
@@ -133,7 +134,7 @@ class _HomePageState extends State<HomePage> {
               }).show();
         },
       ),
-      OutlineButton(
+      OutlinedButton(
         child: Text("AutoMultipleSelect ${selectedList.length}"),
         onPressed: () {
           AutoMultipleSelect(
@@ -148,10 +149,12 @@ class _HomePageState extends State<HomePage> {
       Center(
           child: AutoSwitch(
         value: status,
+        color: Colors.red,
         onChange: (s) => setState(() => status = s),
       )),
       AutoSwitch(
         value: status,
+        color: Colors.deepPurple,
         onChange: (s) => setState(() => status = s),
         title: "Switch Title",
       ),

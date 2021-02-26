@@ -1,5 +1,6 @@
 import 'package:auto_widgets/widgets/tools.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class AutoSwitch extends StatelessWidget {
@@ -7,10 +8,13 @@ class AutoSwitch extends StatelessWidget {
   final Function(bool status) onChange;
   final String title;
 
+  final Color color;
+
   const AutoSwitch({
     @required this.value,
     @required this.onChange,
     this.title = "",
+    this.color,
   })  : assert(value != null),
         assert(onChange != null);
 
@@ -20,8 +24,12 @@ class AutoSwitch extends StatelessWidget {
         ? Switch(
             value: value,
             onChanged: onChange,
+            activeColor: color ?? null,
+            activeTrackColor: color != null ? color.withAlpha(100) : null,
           )
         : CupertinoSwitch(
+            activeColor: color ?? null,
+            trackColor: color != null ? color.withAlpha(100) : null,
             value: value,
             onChanged: onChange,
           );
