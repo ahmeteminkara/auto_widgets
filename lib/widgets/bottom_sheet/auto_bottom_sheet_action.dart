@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_widgets/widgets/tools.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,24 +14,15 @@ class AutoBottomSheetAction extends StatelessWidget {
   })  : assert(title != null && title.isNotEmpty),
         assert(onPressed != null);
 
-
   @override
   Widget build(BuildContext context) {
+    final onClick = () => Timer(Duration(milliseconds: 100), () {
+          Navigator.pop(context);
+          onPressed();
+        });
 
     return Tools.isAndroid
-        ? ListTile(
-            title: new Text(title),
-            onTap: () {
-              Navigator.pop(context);
-              onPressed();
-            },
-          )
-        : CupertinoActionSheetAction(
-            child: Text(title),
-            onPressed: () {
-              Navigator.pop(context);
-              onPressed();
-            },
-          );
+        ? ListTile(title: new Text(title), onTap: onClick)
+        : CupertinoActionSheetAction(child: Text(title), onPressed: onClick);
   }
 }
