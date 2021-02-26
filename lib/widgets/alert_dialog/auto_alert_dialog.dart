@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -62,10 +60,16 @@ class AutoAlertDialog {
     }
     if (_actionCancel != null) _showedActions.add(_actionCancel);
 
-    showDialog(
-      context: _context,
-      barrierDismissible: _barrierDismissible,
-      builder: (context) => Tools.isAndroid ? _android : _ios,
-    );
+    Tools.isAndroid
+        ? showDialog(
+            context: _context,
+            barrierDismissible: _barrierDismissible,
+            builder: (context) => _android,
+          )
+        : showCupertinoDialog(
+            context: _context,
+            barrierDismissible: _barrierDismissible,
+            builder: (context) => _ios,
+          );
   }
 }

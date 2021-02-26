@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:auto_widgets/widgets/multiple_select/auto_multiple_select_widget.dart';
 import 'package:auto_widgets/widgets/tools.dart';
@@ -31,5 +30,6 @@ class AutoMultipleSelect {
         builder: (BuildContext bc) {
           return AutoMultipleSelectWidget(_context, _items, selected, onSelect);
         });
+
   }
 }

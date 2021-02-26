@@ -16,22 +16,27 @@ class AutoLoading {
         _message = message;
 
   void show() {
-    showDialog(
-      context: _context,
-      barrierDismissible: false,
-      builder: (context) {
-        return WillPopScope(
-          onWillPop: () async => false,
-          child: AlertDialog(
-            elevation: 0,
-            insetPadding: EdgeInsets.zero,
-            contentPadding: EdgeInsets.zero,
-            backgroundColor: Colors.transparent,
-            content: _ui,
-          ),
-        );
-      },
-    );
+    final b = (context) => WillPopScope(
+        onWillPop: () async => false,
+        child: AlertDialog(
+          elevation: 0,
+          insetPadding: EdgeInsets.zero,
+          contentPadding: EdgeInsets.zero,
+          backgroundColor: Colors.transparent,
+          content: _ui,
+        ));
+
+    Tools.isAndroid
+        ? showDialog(
+            context: _context,
+            barrierDismissible: false,
+            builder: b,
+          )
+        : showCupertinoDialog(
+            context: _context,
+            barrierDismissible: false,
+            builder: b,
+          );
   }
 
   get _ui => Card(

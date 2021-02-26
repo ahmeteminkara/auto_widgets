@@ -1,6 +1,5 @@
 import 'package:auto_widgets/widgets/tools.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class AutoSwitch extends StatelessWidget {

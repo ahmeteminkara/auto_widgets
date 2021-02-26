@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:auto_widgets/auto_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +19,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('tr'),
+        const Locale('en'),
+      ],
       home: HomePage(),
     );
   }
@@ -33,6 +42,7 @@ class _HomePageState extends State<HomePage> {
   String selected;
   List<String> selectedList = [];
   bool status = false;
+  DateTime currentDateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -157,6 +167,24 @@ class _HomePageState extends State<HomePage> {
         color: Colors.deepPurple,
         onChange: (s) => setState(() => status = s),
         title: "Switch Title",
+      ),
+      OutlinedButton(
+        child: Text(currentDateTime == null ? "AutoDatePicker" : currentDateTime.toString()),
+        onPressed: () {
+          //DateTime now = DateTime.now(); // current time
+          //DateTime open = DateTime(now.year, now.month, now.day - 1);
+
+          AutoDatePicker(
+            context: context,
+            currentDateTime: currentDateTime,
+            //minDateTime: open,
+            onChange: (dateTime) {
+              setState(() {
+                currentDateTime = dateTime;
+              });
+            },
+          );
+        },
       ),
     ];
 

@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:auto_widgets/widgets/tools.dart';
 import 'package:flutter/cupertino.dart';
@@ -55,7 +54,6 @@ class _AutoMultipleSelectWidgetState extends State<AutoMultipleSelectWidget> {
 
     for (var i = 0; i < widget.items.length; i++) {
       String title = widget.items.elementAt(i);
-      bool isSelect = selected.contains(title);
       setState(() {
         listTiles.add(Container(
           child: ListTile(
