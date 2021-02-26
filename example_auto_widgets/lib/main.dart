@@ -29,32 +29,49 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String selected;
+  List<String> selectedList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("AutoWidget Plugin"), centerTitle: true),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          _imageContextMenu,
-          _list,
-        ],
+      body: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _imageContextMenu,
+            _list,
+          ],
+        ),
       ),
     );
   }
 
   get _imageContextMenu {
-    return AutoContextMenu(
-      width: 200,
-      height: 200,
+    final image = AutoContextMenu(
+      width: 110,
+      height: 100,
       child: Image.network(
-        'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg',
+        'https://avatars.githubusercontent.com/u/43777229',
         fit: BoxFit.cover,
       ),
       actions: [
         AutoContextMenuAction(title: "Değiştir", icon: CupertinoIcons.repeat, onPressed: () {}),
         AutoContextMenuAction(title: "Kaldır", icon: CupertinoIcons.delete_simple, onPressed: () {}),
       ],
+    );
+
+    return Container(
+      width: MediaQuery.of(context).size.width * .8,
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        clipBehavior: Clip.hardEdge,
+        margin: EdgeInsets.all(20),
+        child: Row(
+          children: [image, Expanded(child: Center(child: Text("Ahmet Emin KARA")))],
+        ),
+      ),
     );
   }
 
@@ -103,12 +120,35 @@ class _HomePageState extends State<HomePage> {
           Timer(Duration(seconds: 6), () => Navigator.pop(context));
         },
       ),
+      OutlineButton(
+        child: Text(selected ?? "AutoSelectMenu"),
+        onPressed: () {
+          AutoSingleSelect(
+              context: context,
+              selected: selected,
+              items: List.generate(10, (i) => "Item $i"),
+              onSelect: (s) {
+                setState(() => selected = s);
+              }).show();
+        },
+      ),
+      OutlineButton(
+        child: Text("AutoMultipleSelect ${selectedList.length}"),
+        onPressed: () {
+          AutoMultipleSelect(
+              context: context,
+              selected: selectedList,
+              items: List.generate(10, (i) => "Config item $i"),
+              onSelect: (s) {
+                setState(() => selectedList = s);
+              }).show();
+        },
+      ),
     ];
 
     return Expanded(
-      child: Wrap(
-        runSpacing: 10,
-        spacing: 10,
+      child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 40),
         children: btnList.map((e) => e).toList(),
       ),
     );
