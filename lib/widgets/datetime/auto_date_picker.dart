@@ -6,38 +6,38 @@ import 'package:auto_widgets/widgets/tools.dart';
 class AutoDatePicker {
   final BuildContext _context;
   final Function(DateTime dateTime) _onChange;
-  DateTime _currentDateTime;
-  DateTime _minDateTime;
-  DateTime _maxDateTime;
+  DateTime _currentDate;
+  DateTime _minDate;
+  DateTime _maxDate;
 
   AutoDatePicker({
     @required BuildContext context,
     @required Function(DateTime dateTime) onChange,
-    @required DateTime currentDateTime,
-    DateTime minDateTime,
-    DateTime maxDateTime,
+    @required DateTime currentDate,
+    DateTime minDate,
+    DateTime maxDate,
   })  : assert(context != null),
         assert(onChange != null),
         _context = context,
         _onChange = onChange {
     final now = DateTime.now();
 
-    _currentDateTime = currentDateTime ?? now;
-    _minDateTime = minDateTime ?? now;
-    _maxDateTime = maxDateTime ?? DateTime(now.year + 20);
+    _currentDate = currentDate ?? now;
+    _minDate = minDate ?? now;
+    _maxDate = maxDate ?? DateTime(now.year + 20);
 
-    print("_minDate: $_minDateTime");
-    print("_current: $_currentDateTime");
-    print("_maxDate: $_maxDateTime");
+    print("_minDate: $_minDate");
+    print("_current: $_currentDate");
+    print("_maxDate: $_maxDate");
 
     // başlangıç zamanı şimdiki zamandan sonra(after) ise başlangıcı şimdiki zamana eşitle
-    if (_minDateTime.isAfter(_currentDateTime)) {
-      _minDateTime = _currentDateTime;
+    if (_minDate.isAfter(_currentDate)) {
+      _minDate = _currentDate;
       print("başlangıç zamanı şimdiki zamandan sonra(after)");
     }
     // şimdiki zaman bitiş zamandan sonra(after) ise şimdiki zamanı bitiş zamana eşitle
-    if (_currentDateTime.isAfter(_maxDateTime)) {
-      _currentDateTime = _maxDateTime;
+    if (_currentDate.isAfter(_maxDate)) {
+      _currentDate = _maxDate;
       print("şimdiki zaman bitiş zamandan sonra(after)");
     }
 
@@ -47,9 +47,9 @@ class AutoDatePicker {
   _android() async {
     final DateTime picked = await showDatePicker(
       context: _context,
-      initialDate: _currentDateTime,
-      firstDate: _minDateTime,
-      lastDate: _maxDateTime,
+      initialDate: _currentDate,
+      firstDate: _minDate,
+      lastDate: _maxDate,
     );
 
     _onChange(picked);
@@ -63,9 +63,9 @@ class AutoDatePicker {
             height: MediaQuery.of(_context).copyWith().size.height * .4,
             color: Colors.white,
             child: CupertinoDatePicker(
-              minimumDate: _minDateTime,
-              initialDateTime: _currentDateTime,
-              maximumDate: _maxDateTime,
+              minimumDate: _minDate,
+              initialDateTime: _currentDate,
+              maximumDate: _maxDate,
               minuteInterval: 1,
               mode: CupertinoDatePickerMode.date,
               onDateTimeChanged: (DateTime dateTime) {

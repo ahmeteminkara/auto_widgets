@@ -17,3 +17,4 @@ export './widgets/multiple_select/auto_multiple_select.dart';
 export './widgets/switch/auto_switch.dart';
 
 export './widgets/datetime/auto_date_picker.dart';
+export './widgets/datetime/auto_time_picker.dart';

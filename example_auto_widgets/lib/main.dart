@@ -42,7 +42,8 @@ class _HomePageState extends State<HomePage> {
   String selected;
   List<String> selectedList = [];
   bool status = false;
-  DateTime currentDateTime;
+  DateTime currentDate;
+  AutoTime currentTime;
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +90,21 @@ class _HomePageState extends State<HomePage> {
 
   get _list {
     List<Widget> btnList = [
+      OutlinedButton(
+        child: Text(currentTime == null ? "AutoTimePicker" : currentTime.toString()),
+        onPressed: () {
+          AutoTimePicker(
+            context: context,
+            currentTime: currentTime,
+            onChange: (time) {
+              print(time.toString());
+              setState(() {
+                currentTime = time;
+              });
+            },
+          );
+        },
+      ),
       OutlinedButton(
         child: Text("AutoAlertDialog"),
         onPressed: () {
@@ -169,18 +185,18 @@ class _HomePageState extends State<HomePage> {
         title: "Switch Title",
       ),
       OutlinedButton(
-        child: Text(currentDateTime == null ? "AutoDatePicker" : currentDateTime.toString()),
+        child: Text(currentDate == null ? "AutoDatePicker" : currentDate.toString()),
         onPressed: () {
           //DateTime now = DateTime.now(); // current time
           //DateTime open = DateTime(now.year, now.month, now.day - 1);
 
           AutoDatePicker(
             context: context,
-            currentDateTime: currentDateTime,
+            currentDate: currentDate,
             //minDateTime: open,
             onChange: (dateTime) {
               setState(() {
-                currentDateTime = dateTime;
+                currentDate = dateTime;
               });
             },
           );
