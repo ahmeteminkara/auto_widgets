@@ -9,7 +9,7 @@ class AutoMultipleSelect {
   final BuildContext _context;
   final List<String> _items;
   final List<String> selected;
-  final Function(List<String>) onSelect;
+  final Function(List<String> selectedList) onSelect;
   
 
   AutoMultipleSelect({

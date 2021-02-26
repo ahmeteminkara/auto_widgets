@@ -8,7 +8,7 @@ class AutoSingleSelect {
   final BuildContext _context;
   final List<String> _items;
   final String selected;
-  final Function(String) onSelect;
+  final Function(String selected) onSelect;
 
   AutoSingleSelect({
     @required BuildContext context,

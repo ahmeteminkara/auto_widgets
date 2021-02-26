@@ -8,7 +8,7 @@ class AutoMultipleSelectWidget extends StatefulWidget {
   final BuildContext context;
   final List<String> items;
   final List<String> selected;
-  final Function(List<String>) onSelect;
+  final Function(List<String> selectedList) onSelect;
 
   AutoMultipleSelectWidget(this.context, this.items, this.selected, this.onSelect);
 

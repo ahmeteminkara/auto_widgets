@@ -31,6 +31,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String selected;
   List<String> selectedList = [];
+  bool status = false;
 
   @override
   Widget build(BuildContext context) {
@@ -143,6 +144,16 @@ class _HomePageState extends State<HomePage> {
                 setState(() => selectedList = s);
               }).show();
         },
+      ),
+      Center(
+          child: AutoSwitch(
+        value: status,
+        onChange: (s) => setState(() => status = s),
+      )),
+      AutoSwitch(
+        value: status,
+        onChange: (s) => setState(() => status = s),
+        title: "Switch Title",
       ),
     ];
 
