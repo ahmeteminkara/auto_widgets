@@ -51,7 +51,6 @@ class AutoTimePicker {
   _android() async {
     final TimeOfDay picked = await showTimePicker(
       context: _context,
-      initialEntryMode: TimePickerEntryMode.input,
       initialTime: _currentTime.toTimeOfDay(),
     );
     if (picked != null) _onChange(AutoTime(picked.hour, picked.minute));
