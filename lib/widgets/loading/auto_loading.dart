@@ -44,7 +44,7 @@ class AutoLoading {
         clipBehavior: Clip.hardEdge,
         child: ListTile(
           tileColor: Colors.transparent,
-          leading: Tools.isAndroid ? CircularProgressIndicator(strokeWidth: 2) : CupertinoActivityIndicator(),
+          leading: Tools.isAndroid ? CircularProgressIndicator(strokeWidth: 2) : CupertinoActivityIndicator(radius: 13),
           title: Text(_message),
         ),
       );

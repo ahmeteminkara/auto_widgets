@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> {
   bool status = false;
   DateTime currentDate;
   AutoTime currentTime;
+  double sliderValue = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -202,11 +203,24 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
+      AutoSlider(
+          value: sliderValue,
+          color: Colors.deepOrange,
+          onChange: (value) {
+            setState(() => sliderValue = value);
+          }),
+      AutoSlider(
+          value: sliderValue,
+          color: Colors.deepPurple,
+          divisions: 10,
+          onChange: (value) {
+            setState(() => sliderValue = value);
+          }),
     ];
 
     return Expanded(
       child: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 40),
+        padding: EdgeInsets.all(20),
         children: btnList.map((e) => e).toList(),
       ),
     );

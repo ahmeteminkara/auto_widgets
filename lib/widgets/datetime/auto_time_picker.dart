@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:auto_widgets/widgets/tools.dart';
 
-class AutoTime {
-  int _hour;
-  int _minute;
+class AutoTime extends TimeOfDay {
+  final int _hour;
+  final int _minute;
 
   AutoTime(int hour, int minute)
       : _hour = hour,
