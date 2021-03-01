@@ -1,14 +1,74 @@
-# auto_widgets
+# Auto Widgets
 
-A new Flutter package project.
+This Flutter plugin automatically shows native components
+
 
 ## Getting Started
+```yaml
+dependencies:
+    auto_widgets:
+        git:
+            url: git://github.com/ahmeteminkara/auto_widgets.git
+```
+```dart
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+import 'package:auto_widgets/auto_widgets.dart';
+// for the local language of month names
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+MaterialApp(
+    localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+    ],
+)
+```
+
+- - -
+## AutoContextMenu
+<kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/01-context-menu-android.gif" width="200" /></kbd> <kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/01-context-menu-ios.gif" width="200" /></kbd> 
+
+- - -
+## AutoTimePicker
+<kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/02-time-android.gif" width="200" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/02-time-ios.gif" width="200" /></kbd> 
+
+- - -
+## AutoAlertDialog
+<kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/03-alert-android.gif" width="200" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/03-alert-ios.gif" width="200" /></kbd> 
+
+- - -
+## AutoAlertDialog (Defalut action)
+<kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/04-alert-default-android.gif" width="200" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/04-alert-default-ios.gif" width="200" /></kbd> 
+
+- - -
+## AutoBottomSheet
+<kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/05-option-android.gif" width="200" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/05-option-ios.gif" width="200" /></kbd> 
+
+- - -
+## AutoLoading
+<kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/06-loading-android.gif" width="200" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/06-loading-ios.gif" width="200" /></kbd> 
+
+- - -
+## AutoSelectMenu
+<kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/07-single-select-android.gif" width="200" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/07-single-select-ios.gif" width="200" /></kbd> 
+
+- - -
+## AutoMultipleSelect
+
+<kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/08-multiple-select-android.gif" width="200" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/08-multiple-select-ios.gif" width="200" /></kbd> 
+
+- - -
+## AutoSwitch
+
+<kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/09-switch-android.gif" width="200" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/09-switch-ios.gif" width="200" /></kbd> 
+
+- - -
+## AutoDatePicker
+
+<kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/10-date-android.gif" width="200" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/10-date-ios.gif" width="200" /></kbd> 
+
+
+- - -
+## AutoSlider
+
+<kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/11-slider-android.gif" width="200" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/11-slider-ios.gif" width="200" /></kbd> 
