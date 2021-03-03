@@ -6,6 +6,11 @@ This Flutter plugin automatically shows native components
 ## Getting Started
 ```yaml
 dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations: # add line
+    sdk: flutter # add line
+
     auto_widgets:
         git:
             url: git://github.com/ahmeteminkara/auto_widgets.git
@@ -15,6 +20,7 @@ dependencies:
 import 'package:auto_widgets/auto_widgets.dart';
 // for the local language of month names
 import 'package:flutter_localizations/flutter_localizations.dart';
+
 
 MaterialApp(
     localizationsDelegates: const [
