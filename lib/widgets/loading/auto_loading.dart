@@ -7,9 +7,11 @@ class AutoLoading {
   final String _message;
 
   AutoLoading({
-    required BuildContext context,
-    required String message,
-  })   : assert(message.length > 5 && message.length < 20),
+    @required BuildContext context,
+    @required String message,
+  })  : assert(context != null),
+        assert(message != null),
+        assert(message.length > 5 && message.length < 20),
         _context = context,
         _message = message;
 

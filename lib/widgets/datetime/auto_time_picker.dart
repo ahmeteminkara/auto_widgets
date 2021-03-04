@@ -9,8 +9,7 @@ class AutoTime extends TimeOfDay {
 
   AutoTime(int hour, int minute)
       : _hour = hour,
-        _minute = minute,
-        super(hour: hour, minute: minute);
+        _minute = minute;
 
   static now() {
     DateTime timeNow = DateTime.now();
@@ -30,15 +29,19 @@ class AutoTime extends TimeOfDay {
 class AutoTimePicker {
   final BuildContext _context;
   final Function(AutoTime time) _onChange;
-  AutoTime? _currentTime;
+  AutoTime _currentTime;
 
   AutoTimePicker({
-    required BuildContext context,
-    required Function(AutoTime autoTime) onChange,
-    required AutoTime currentTime,
-  })   : _context = context,
+    @required BuildContext context,
+    @required Function(AutoTime autoTime) onChange,
+    @required AutoTime currentTime,
+  })  : assert(context != null),
+        assert(onChange != null),
+        _context = context,
         _onChange = onChange {
-    _currentTime = currentTime;
+    final now = AutoTime.now();
+
+    _currentTime = currentTime ?? now;
 
     print("currentTime: $_currentTime");
 
@@ -46,9 +49,9 @@ class AutoTimePicker {
   }
 
   _android() async {
-    final TimeOfDay? picked = await showTimePicker(
+    final TimeOfDay picked = await showTimePicker(
       context: _context,
-      initialTime: _currentTime!.toTimeOfDay(),
+      initialTime: _currentTime.toTimeOfDay(),
     );
     if (picked != null) _onChange(AutoTime(picked.hour, picked.minute));
   }
@@ -67,7 +70,7 @@ class AutoTimePicker {
               onTimerDurationChanged: (v) {
                 _onChange(AutoTime(v.inHours, v.inMinutes - (v.inHours * 60)));
               },
-              initialTimerDuration: _currentTime!.toDuration(),
+              initialTimerDuration: _currentTime.toDuration(),
             ),
           );
         });

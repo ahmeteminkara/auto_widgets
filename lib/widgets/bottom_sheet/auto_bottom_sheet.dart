@@ -10,19 +10,21 @@ class AutoBottomSheet {
   final List<AutoBottomSheetAction> _actions;
 
   AutoBottomSheet({
-    required BuildContext context,
-    required String message,
-    String title = "",
-    List<AutoBottomSheetAction> actions = const [],
-  })  : assert(
-            actions.length >= 2 && actions.length <= 4, "Hi, actions length must be min 2, max 4. Use 'AutoSelectMenu' as an alternative"),
+    @required BuildContext context,
+    @required String message,
+    String title,
+    List<AutoBottomSheetAction> actions,
+  })  : assert(context != null),
+        assert(message != null),
+        assert(actions != null),
+        assert(actions.length >= 2 && actions.length <= 4, "Hi, actions length must be min 2, max 4. Use 'AutoSelectMenu' as an alternative"),
         _context = context,
         _message = message,
-        _title = title,
+        _title = title ?? "",
         _actions = actions;
 
   _android() {
-    List<Widget> tempList = [];
+    List<Widget> tempList = List();
     tempList.add(ListTile(
       title: _title.isNotEmpty ? Text(_title, style: TextStyle(fontWeight: FontWeight.w500)) : null,
       subtitle: Text(_message, style: TextStyle(fontWeight: FontWeight.w300)),
@@ -42,7 +44,7 @@ class AutoBottomSheet {
   }
 
   get _ios {
-    List<Widget> tempList = [];
+    List<Widget> tempList = List();
     _actions.forEach((e) => tempList.add(e));
     tempList.add(CupertinoActionSheetAction(
       child: Text("Vazgeç"),

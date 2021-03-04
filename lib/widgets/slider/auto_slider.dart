@@ -8,18 +8,20 @@ class AutoSlider extends StatelessWidget {
   final String title;
   final double min;
   final double max;
-  final Color? color;
-  final int? divisions;
+  final Color color;
+  final int divisions;
 
   const AutoSlider({
-    required this.value,
-    required this.onChange,
+    @required this.value,
+    @required this.onChange,
     this.title = "",
     this.min = 0,
     this.max = 100,
     this.color,
     this.divisions,
-  })  :
+  })  : assert(value != null),
+        assert(onChange != null),
+        assert(min != null && max != null),
         assert(min >= 0 && min < max),
         assert(divisions == null || (divisions >= min && divisions <= max));
 
@@ -28,10 +30,10 @@ class AutoSlider extends StatelessWidget {
     final android = SliderTheme(
         data: SliderTheme.of(context).copyWith(
           inactiveTrackColor: Colors.grey[300],
-          activeTrackColor: color != null ? color!.withAlpha(140) : null,
+          activeTrackColor: color != null ? color.withAlpha(140) : null,
           trackHeight: 4.0,
           thumbColor: color ?? null,
-          overlayColor: color != null ? color!.withAlpha(30) : null,
+          overlayColor: color != null ? color.withAlpha(30) : null,
           valueIndicatorColor: color ?? null,
           valueIndicatorTextStyle: TextStyle(fontSize: 18),
           thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),

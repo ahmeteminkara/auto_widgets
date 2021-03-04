@@ -6,33 +6,37 @@ import 'package:auto_widgets/widgets/tools.dart';
 class AutoDatePicker {
   final BuildContext _context;
   final Function(DateTime dateTime) _onChange;
-  DateTime? _currentDate;
-  DateTime? _minDate;
-  DateTime? _maxDate;
+  DateTime _currentDate;
+  DateTime _minDate;
+  DateTime _maxDate;
 
   AutoDatePicker({
-    required BuildContext context,
-    required Function(DateTime dateTime) onChange,
-    required DateTime currentDate,
-    DateTime? minDate,
-    DateTime? maxDate,
-  })  : _context = context,
+    @required BuildContext context,
+    @required Function(DateTime dateTime) onChange,
+    @required DateTime currentDate,
+    DateTime minDate,
+    DateTime maxDate,
+  })  : assert(context != null),
+        assert(onChange != null),
+        _context = context,
         _onChange = onChange {
-    _currentDate = currentDate;
-    _minDate = minDate ?? currentDate;
-    _maxDate = maxDate ?? DateTime(currentDate.year + 20);
+    final now = DateTime.now();
+
+    _currentDate = currentDate ?? now;
+    _minDate = minDate ?? now;
+    _maxDate = maxDate ?? DateTime(now.year + 20);
 
     print("_minDate: $_minDate");
     print("_current: $_currentDate");
     print("_maxDate: $_maxDate");
 
     // başlangıç zamanı şimdiki zamandan sonra(after) ise başlangıcı şimdiki zamana eşitle
-    if (_minDate!.isAfter(_currentDate!)) {
+    if (_minDate.isAfter(_currentDate)) {
       _minDate = _currentDate;
       print("başlangıç zamanı şimdiki zamandan sonra(after)");
     }
     // şimdiki zaman bitiş zamandan sonra(after) ise şimdiki zamanı bitiş zamana eşitle
-    if (_currentDate!.isAfter(_maxDate!)) {
+    if (_currentDate.isAfter(_maxDate)) {
       _currentDate = _maxDate;
       print("şimdiki zaman bitiş zamandan sonra(after)");
     }
@@ -41,14 +45,14 @@ class AutoDatePicker {
   }
 
   _android() async {
-    final DateTime? picked = await showDatePicker(
+    final DateTime picked = await showDatePicker(
       context: _context,
-      initialDate: _currentDate!,
-      firstDate: _minDate!,
-      lastDate: _maxDate!,
+      initialDate: _currentDate,
+      firstDate: _minDate,
+      lastDate: _maxDate,
     );
 
-    if (picked != null) _onChange(picked);
+    _onChange(picked);
   }
 
   _ios() {

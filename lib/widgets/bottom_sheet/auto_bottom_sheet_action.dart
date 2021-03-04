@@ -9,9 +9,10 @@ class AutoBottomSheetAction extends StatelessWidget {
   final Function onPressed;
 
   AutoBottomSheetAction({
-    required this.title,
-    required this.onPressed,
-  }) : assert(title.isNotEmpty);
+    @required this.title,
+    @required this.onPressed,
+  })  : assert(title != null && title.isNotEmpty),
+        assert(onPressed != null);
 
   @override
   Widget build(BuildContext context) {

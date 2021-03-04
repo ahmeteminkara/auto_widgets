@@ -3,14 +3,15 @@ import 'package:flutter/cupertino.dart';
 
 class AutoContextMenuAction extends StatelessWidget {
   final String title;
-  final IconData? icon;
+  final IconData icon;
   final Function onPressed;
 
   AutoContextMenuAction({
-    required this.title,
-    required this.onPressed,
+    @required this.title,
+    @required this.onPressed,
     this.icon,
-  })  : assert( title.isNotEmpty);
+  })  : assert(title != null && title.isNotEmpty),
+        assert(onPressed != null);
 
   @override
   Widget build(BuildContext context) {
