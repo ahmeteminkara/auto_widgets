@@ -10,13 +10,11 @@ class AutoContextMenu extends StatelessWidget {
   final List<AutoContextMenuAction> _actions;
 
   AutoContextMenu({
-    @required double width,
-    @required double height,
-    @required Widget child,
-    @required List<AutoContextMenuAction> actions,
-  })  : assert(child != null),
-        assert(actions != null),
-        assert(actions.length > 0),
+    required double width,
+    required double height,
+    required Widget child,
+    required List<AutoContextMenuAction> actions,
+  })   : assert(actions.length > 0),
         assert(width > 0 && height > 0),
         _width = width,
         _height = height,

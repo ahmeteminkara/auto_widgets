@@ -11,20 +11,18 @@ class AutoAlertDialog {
   final bool _barrierDismissible;
   final List<AutoAlertDialogAction> _actions;
 
-  List<AutoAlertDialogAction> _showedActions = List();
-  AutoAlertDialogAction _actionCancel;
+  List<AutoAlertDialogAction> _showedActions = [];
+  AutoAlertDialogAction _actionCancel = AutoAlertDialogAction.defaultAction;
 
   AutoAlertDialog({
-    @required BuildContext context,
-    @required String message,
-    List<AutoAlertDialogAction> actions,
-    String title,
+    required BuildContext context,
+    required String message,
+    List<AutoAlertDialogAction>? actions,
+    String title = "",
     bool barrierDismissible = true,
-  })  : assert(context != null),
-        assert(message != null),
-        _context = context,
+  })  : _context = context,
         _message = message,
-        _title = title ?? "",
+        _title = title,
         _barrierDismissible = barrierDismissible,
         _actions = actions ?? [AutoAlertDialogAction.defaultAction];
 
@@ -58,7 +56,8 @@ class AutoAlertDialog {
         _showedActions.add(btn);
       }
     }
-    if (_actionCancel != null) _showedActions.add(_actionCancel);
+
+    _showedActions.add(_actionCancel);
 
     Tools.isAndroid
         ? showDialog(

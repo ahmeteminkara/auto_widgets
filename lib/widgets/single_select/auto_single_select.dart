@@ -11,14 +11,11 @@ class AutoSingleSelect {
   final Function(String selected) onSelect;
 
   AutoSingleSelect({
-    @required BuildContext context,
-    @required this.selected,
-    @required this.onSelect,
-    @required List<String> items,
-  })  : assert(context != null),
-        assert(onSelect != null),
-        assert(items != null),
-        assert(items.length >= 2, "Hi, items length must be min 2"),
+    required BuildContext context,
+    required this.selected,
+    required this.onSelect,
+    required List<String> items,
+  })   : assert(items.length >= 2, "Hi, items length must be min 2"),
         _context = context,
         _items = items;
 

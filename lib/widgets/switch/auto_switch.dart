@@ -7,15 +7,14 @@ class AutoSwitch extends StatelessWidget {
   final Function(bool status) onChange;
   final String title;
 
-  final Color color;
+  final Color? color;
 
   const AutoSwitch({
-    @required this.value,
-    @required this.onChange,
+    required this.value,
+    required this.onChange,
     this.title = "",
     this.color,
-  })  : assert(value != null),
-        assert(onChange != null);
+  }) ;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +23,11 @@ class AutoSwitch extends StatelessWidget {
             value: value,
             onChanged: onChange,
             activeColor: color ?? null,
-            activeTrackColor: color != null ? color.withAlpha(100) : null,
+            activeTrackColor: color != null ? color!.withAlpha(100) : null,
           )
         : CupertinoSwitch(
             activeColor: color ?? null,
-            trackColor: color != null ? color.withAlpha(100) : null,
+            trackColor: color != null ? color!.withAlpha(100) : null,
             value: value,
             onChanged: onChange,
           );

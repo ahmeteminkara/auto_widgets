@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_widgets/widgets/tools.dart';
@@ -9,26 +8,28 @@ class AutoAlertDialogAction extends StatelessWidget {
   final Function onPressed;
 
   AutoAlertDialogAction({
-    @required this.title,
-    @required this.onPressed,
+    required this.title,
+    required this.onPressed,
     this.isCancel = false,
-  })  : assert(title != null && title.isNotEmpty),
-        assert(onPressed != null);
+  }) : assert(title.isNotEmpty);
 
   static get defaultAction => AutoAlertDialogAction(title: "Tamam", onPressed: () {});
 
   @override
   Widget build(BuildContext context) {
-    Color color = isCancel ? Colors.red : Theme.of(context).buttonTheme.colorScheme.primary;
+    Color color = isCancel ? Colors.red : Theme.of(context).primaryColor;
 
     return Tools.isAndroid
-        ? FlatButton(
+        ? TextButton(
             onPressed: () {
               Navigator.pop(context);
               onPressed();
             },
             child: Text(title),
-            textColor: color)
+            style: TextButton.styleFrom(
+              backgroundColor: color,
+            ),
+          )
         : CupertinoDialogAction(
             child: Text(title),
             onPressed: () {
