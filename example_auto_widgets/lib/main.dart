@@ -64,11 +64,17 @@ class _HomePageState extends State<HomePage> {
 
   get _imageContextMenu {
     final image = AutoContextMenu(
-      child: Image.network(
-        'https://avatars.githubusercontent.com/u/43777229',
-        width: 100,
-        height: 100,
-        fit: BoxFit.cover,
+      child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white,
+        ),
+        child: Image.network(
+          'https://avatars.githubusercontent.com/u/43777229',
+          width: 100,
+          height: 100,
+          fit: BoxFit.cover,
+        ),
       ),
       actions: [
         AutoContextMenuAction(title: "Değiştir", icon: CupertinoIcons.repeat, onPressed: () {}),
