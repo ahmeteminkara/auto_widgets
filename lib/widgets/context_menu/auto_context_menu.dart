@@ -26,8 +26,8 @@ class AutoContextMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: _width,
-      height: _height,
+      //width: _width,
+      //height: _height,
       child: CupertinoContextMenu(
         //previewBuilder: (context, animation, child) => Container(child: child),
         child: _child,
