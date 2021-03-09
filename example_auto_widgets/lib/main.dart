@@ -64,10 +64,10 @@ class _HomePageState extends State<HomePage> {
 
   get _imageContextMenu {
     final image = AutoContextMenu(
-      width: 110,
-      height: 100,
       child: Image.network(
         'https://avatars.githubusercontent.com/u/43777229',
+        width: 100,
+        height: 100,
         fit: BoxFit.cover,
       ),
       actions: [
