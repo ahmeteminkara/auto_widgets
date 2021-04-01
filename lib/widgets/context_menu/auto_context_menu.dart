@@ -3,15 +3,23 @@ import 'package:auto_widgets/widgets/context_menu/auto_context_menu_action.dart'
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+enum PreviewSize {
+  Small,
+  Medium,
+  Large,
+}
+
 class AutoContextMenu extends StatelessWidget {
-  double width;
-  double height;
+  final double width;
+  final double height;
   final Widget _child;
   final List<AutoContextMenuAction> _actions;
+  final PreviewSize previewSize;
 
   AutoContextMenu({
     this.width = 0,
     this.height = 0,
+    @required this.previewSize,
     @required Widget child,
     @required List<AutoContextMenuAction> actions,
   })  : assert(child != null),
@@ -22,17 +30,31 @@ class AutoContextMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (width == 0) width = MediaQuery.of(context).size.width * .8;
-    if (height == 0) height = MediaQuery.of(context).size.width * .8;
+    double _width;
+    double _height;
 
-    if (width < 50) width = 50;
-    if (height < 50) height = 50;
+    switch (previewSize) {
+      case PreviewSize.Large:
+        _width = MediaQuery.of(context).size.width * .9;
+        _height = MediaQuery.of(context).size.width * .9;
+        break;
+      case PreviewSize.Medium:
+        _width = MediaQuery.of(context).size.width * .6;
+        _height = MediaQuery.of(context).size.width * .6;
+        break;
+      default:
+        _width = MediaQuery.of(context).size.width * .3;
+        _height = MediaQuery.of(context).size.width * .3;
+        break;
+    }
 
     return CupertinoContextMenu(
-      previewBuilder: (context, animation, child) => Container(
-        width: width,
-        height: height,
-        child: child,
+      previewBuilder: (context, animation, child) => Center(
+        child: Container(
+          width: _width,
+          height: _height,
+          child: child,
+        ),
       ),
       child: _child,
       actions: _actions.map((e) => e).toList(),

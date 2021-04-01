@@ -52,7 +52,6 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(title: Text("AutoWidget Plugin"), centerTitle: true),
       body: Container(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _imageContextMenu,
             _list,
@@ -64,6 +63,7 @@ class _HomePageState extends State<HomePage> {
 
   get _imageContextMenu {
     final image = AutoContextMenu(
+      previewSize: PreviewSize.Large,
       child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
@@ -81,7 +81,6 @@ class _HomePageState extends State<HomePage> {
         AutoContextMenuAction(title: "Kaldır", icon: CupertinoIcons.delete_simple, onPressed: () {}),
       ],
     );
-
     return Container(
       width: MediaQuery.of(context).size.width * .8,
       child: Card(
@@ -89,7 +88,13 @@ class _HomePageState extends State<HomePage> {
         clipBehavior: Clip.hardEdge,
         margin: EdgeInsets.all(20),
         child: Row(
-          children: [image, Expanded(child: Center(child: Text("Ahmet Emin KARA")))],
+          children: [
+            image,
+            Expanded(
+                child: Center(
+              child: Text("Ahmet Emin KARA"),
+            ))
+          ],
         ),
       ),
     );
