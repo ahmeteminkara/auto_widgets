@@ -43,7 +43,7 @@ MaterialApp(
 <kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/03-alert-android.gif" width="140" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/03-alert-ios.gif" width="140" /></kbd> 
 
 
-## AutoAlertDialog (Defalut action)
+## AutoAlertDialog (Default action)
 <kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/04-alert-default-android.gif" width="140" /></kbd><kbd><img src="https://raw.githubusercontent.com/ahmeteminkara/auto_widgets/main/gif/04-alert-default-ios.gif" width="140" /></kbd> 
 
 
