@@ -26,7 +26,7 @@ class AutoSingleSelect {
 
   _android(int index) {
     final _controller = ScrollController();
-    final _height = 55.0;
+    final _height = 60.0;
 
     List<Widget> listTiles = [];
 
@@ -53,7 +53,7 @@ class AutoSingleSelect {
         context: _context,
         builder: (BuildContext bc) {
           return Container(
-            height: _height50,
+            height: _height40,
             child: ListView(
               controller: _controller,
               children: listTiles.map((e) => e).toList(),
@@ -62,7 +62,7 @@ class AutoSingleSelect {
         });
   }
 
-  get _height50 => MediaQuery.of(_context).size.height * .5;
+  get _height40 => MediaQuery.of(_context).size.height * .4;
 
   _ios(index) {
     showCupertinoModalPopup(
