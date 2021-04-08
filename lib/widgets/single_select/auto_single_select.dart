@@ -7,20 +7,22 @@ import 'package:flutter/material.dart';
 class AutoSingleSelect {
   final BuildContext _context;
   final List<String> _items;
-  final String selected;
-  final Function(String selected) onSelect;
+  final String _selected;
+  final Function(String selected) _onSelect;
 
   AutoSingleSelect({
     @required BuildContext context,
-    @required this.selected,
-    @required this.onSelect,
+    @required String selected,
+    @required Function(String selected) onSelect,
     @required List<String> items,
   })  : assert(context != null),
         assert(onSelect != null),
         assert(items != null),
         assert(items.length >= 2, "Hi, items length must be min 2"),
         _context = context,
-        _items = items;
+        _items = items,
+        _selected = selected,
+        _onSelect = onSelect;
 
   _android(int index) {
     final _controller = ScrollController();
@@ -66,10 +68,10 @@ class AutoSingleSelect {
     showCupertinoModalPopup(
         context: _context,
         builder: (_) => Container(
-              height: 250,
+              height: 200,
               child: CupertinoPicker(
                 backgroundColor: Colors.white,
-                itemExtent: 50,
+                itemExtent: 60,
                 scrollController: FixedExtentScrollController(initialItem: index ?? 0),
                 children: _items.map((e) => Center(child: Text(e))).toList(),
                 onSelectedItemChanged: (i) => _onClick(_items.elementAt(i)),
@@ -79,12 +81,12 @@ class AutoSingleSelect {
 
   _onClick(s) => Timer(Duration(milliseconds: 100), () {
         if (Tools.isAndroid) Navigator.pop(_context);
-        onSelect(s);
+        _onSelect(s);
       });
 
   void show() {
     int index = -1;
-    if (selected != null && selected.isNotEmpty) index = _items.indexOf(selected);
+    if (_selected != null && _selected.isNotEmpty) index = _items.indexOf(_selected);
 
     Tools.isAndroid ? _android(index) : _ios(index);
   }
