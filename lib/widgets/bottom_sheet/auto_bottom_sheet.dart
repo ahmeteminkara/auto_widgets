@@ -17,7 +17,6 @@ class AutoBottomSheet {
   })  : assert(context != null),
         assert(message != null),
         assert(actions != null),
-        assert(actions.length >= 2 && actions.length <= 4, "Hi, actions length must be min 2, max 4. Use 'AutoSelectMenu' as an alternative"),
         _context = context,
         _message = message,
         _title = title ?? "",
