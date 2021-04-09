@@ -146,11 +146,12 @@ class _HomePageState extends State<HomePage> {
       OutlinedButton(
         child: Text("AutoBottomSheet"),
         onPressed: () {
-          AutoBottomSheet(context: context, message: "AutoBottomSheet", title: "AutoAlertDialog Title", actions: [
-            AutoBottomSheetAction(title: "Seçenek 1", onPressed: () {}),
-            AutoBottomSheetAction(title: "Seçenek 2", onPressed: () {}),
-            AutoBottomSheetAction(title: "Seçenek 3", onPressed: () {}),
-          ]).show();
+          AutoBottomSheet(
+            context: context,
+            message: "AutoBottomSheet",
+            title: "AutoAlertDialog Title",
+            actions: List.generate(10, (index) => AutoBottomSheetAction(title: "Item $index", onPressed: () {})),
+          ).show();
         },
       ),
       OutlinedButton(

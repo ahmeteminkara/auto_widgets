@@ -23,11 +23,7 @@ class AutoBottomSheet {
         _actions = actions;
 
   _android() {
-    List<Widget> tempList = List();
-    tempList.add(ListTile(
-      title: _title.isNotEmpty ? Text(_title, style: TextStyle(fontWeight: FontWeight.w500)) : null,
-      subtitle: Text(_message, style: TextStyle(fontWeight: FontWeight.w300)),
-    ));
+    List<Widget> tempList = [];
 
     _actions.forEach((e) => tempList.add(e));
 
@@ -35,15 +31,29 @@ class AutoBottomSheet {
         context: _context,
         builder: (BuildContext bc) {
           return Container(
-            child: Wrap(
-              children: tempList.map((e) => e).toList(),
+            child: Column(
+              children: [
+                ListTile(
+                  title: _title.isNotEmpty ? Text(_title, style: TextStyle(fontWeight: FontWeight.w500)) : null,
+                  subtitle: Text(_message, style: TextStyle(fontWeight: FontWeight.w300)),
+                ),
+                Divider(height: 0),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: tempList.map((e) => e).toList(),
+                    ),
+                  ),
+                ),
+              ],
             ),
           );
         });
   }
 
   get _ios {
-    List<Widget> tempList = List();
+    List<Widget> tempList = [];
     _actions.forEach((e) => tempList.add(e));
     tempList.add(CupertinoActionSheetAction(
       child: Text("Vazgeç"),

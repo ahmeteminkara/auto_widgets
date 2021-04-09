@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_widgets/widgets/tools.dart';
@@ -22,13 +21,13 @@ class AutoAlertDialogAction extends StatelessWidget {
     Color color = isCancel ? Colors.red : Theme.of(context).buttonTheme.colorScheme.primary;
 
     return Tools.isAndroid
-        ? FlatButton(
+        ? TextButton(
+            style: ButtonStyle(foregroundColor: MaterialStateProperty.all(color)),
             onPressed: () {
               Navigator.pop(context);
               onPressed();
             },
-            child: Text(title),
-            textColor: color)
+            child: Text(title))
         : CupertinoDialogAction(
             child: Text(title),
             onPressed: () {

@@ -11,7 +11,7 @@ class AutoAlertDialog {
   final bool _barrierDismissible;
   final List<AutoAlertDialogAction> _actions;
 
-  List<AutoAlertDialogAction> _showedActions = List();
+  List<AutoAlertDialogAction> _showedActions = [];
   AutoAlertDialogAction _actionCancel;
 
   AutoAlertDialog({
