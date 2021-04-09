@@ -150,6 +150,7 @@ class _HomePageState extends State<HomePage> {
             context: context,
             message: "AutoBottomSheet",
             title: "AutoAlertDialog Title",
+            iosCancelText: "Kapat",
             actions: List.generate(10, (index) => AutoBottomSheetAction(title: "Item $index", onPressed: () {})),
           ).show();
         },

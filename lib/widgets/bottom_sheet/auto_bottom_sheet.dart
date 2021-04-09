@@ -8,10 +8,12 @@ class AutoBottomSheet {
   final String _title;
   final String _message;
   final List<AutoBottomSheetAction> _actions;
+  final String iosCancelText;
 
   AutoBottomSheet({
     @required BuildContext context,
     @required String message,
+    @required this.iosCancelText,
     String title,
     List<AutoBottomSheetAction> actions,
   })  : assert(context != null),
@@ -56,7 +58,7 @@ class AutoBottomSheet {
     List<Widget> tempList = [];
     _actions.forEach((e) => tempList.add(e));
     tempList.add(CupertinoActionSheetAction(
-      child: Text("Vazgeç"),
+      child: Text(iosCancelText),
       isDestructiveAction: true,
       isDefaultAction: true,
       onPressed: () => Navigator.pop(_context),
