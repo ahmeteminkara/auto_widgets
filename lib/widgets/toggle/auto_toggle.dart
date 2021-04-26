@@ -19,7 +19,7 @@ class AutoToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final styleTrue = color ?? null;
-    final styleFalse = color != null ? color.withAlpha(100) : null;
+    final styleFalse = color != null ? color.withAlpha(130) : null;
     return TextButton.icon(
       icon: Icon(value ? Icons.check_box : Icons.check_box_outline_blank),
       label: Text(title),
