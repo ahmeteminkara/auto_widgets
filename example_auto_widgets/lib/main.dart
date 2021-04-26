@@ -198,6 +198,12 @@ class _HomePageState extends State<HomePage> {
         onChange: (s) => setState(() => status = s),
         title: "Switch Title",
       ),
+      AutoToggle(
+        value: status,
+        color: Colors.deepOrange,
+        onChange: (s) => setState(() => status = s),
+        title: "Toggle Title",
+      ),
       OutlinedButton(
         child: Text(currentDate == null ? "AutoDatePicker" : currentDate.toString()),
         onPressed: () {
@@ -234,7 +240,7 @@ class _HomePageState extends State<HomePage> {
     return Expanded(
       child: ListView(
         padding: EdgeInsets.all(20),
-        children: btnList.map((e) => e).toList(),
+        children: btnList.map((e) => Container(child: e)).toList(),
       ),
     );
   }

@@ -20,3 +20,5 @@ export './widgets/datetime/auto_date_picker.dart';
 export './widgets/datetime/auto_time_picker.dart';
 
 export './widgets/slider/auto_slider.dart';
+
+export './widgets/toggle/auto_toggle.dart';
