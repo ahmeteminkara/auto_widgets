@@ -16,10 +16,12 @@ class AutoBottomSheetAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final onClick = () => Timer(Duration(milliseconds: 100), () {
-          Navigator.pop(context);
-          onPressed();
-        });
+    final onClick = () {
+      Navigator.pop(context);
+      Timer(Duration(milliseconds: 100), () {
+        onPressed();
+      });
+    };
 
     return Tools.isAndroid
         ? ListTile(title: new Text(title), onTap: onClick)
