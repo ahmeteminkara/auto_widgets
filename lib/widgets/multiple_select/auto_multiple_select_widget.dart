@@ -1,4 +1,3 @@
-
 import 'package:auto_widgets/widgets/tools.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,16 +29,20 @@ class _AutoMultipleSelectWidgetState extends State<AutoMultipleSelectWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final w = Container(
-      height: _height50,
-      child: ListView.separated(
-        itemCount: listTiles.length,
-        itemBuilder: (context, index) => listTiles.elementAt(index),
-        separatorBuilder: (context, index) => Divider(height: 1),
+    final w = ConstrainedBox(
+      constraints: new BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.6),
+      child: Container(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: listTiles.map((e) => e).toList(),
+          ),
+        ),
       ),
     );
 
-    if (Tools.isAndroid) return w;
+    //if (Tools.isAndroid) return w;
 
     return Card(
       clipBehavior: Clip.hardEdge,
@@ -57,8 +60,9 @@ class _AutoMultipleSelectWidgetState extends State<AutoMultipleSelectWidget> {
       setState(() {
         listTiles.add(Container(
           child: ListTile(
-            leading: Tools.isAndroid ? _androidWidget(title) : null,
-            trailing: !Tools.isAndroid ? _iosWidget(title) : null,
+            //leading: Tools.isAndroid ? _androidWidget(title) : null,
+            //trailing: !Tools.isAndroid ? _iosWidget(title) : null,
+            trailing: Tools.isAndroid ? _androidWidget(title) : _iosWidget(title),
             title: Text(title),
             onTap: () => _onClick(title),
           ),
@@ -68,7 +72,7 @@ class _AutoMultipleSelectWidgetState extends State<AutoMultipleSelectWidget> {
   }
 
   _androidWidget(String title) {
-    return Checkbox(
+    return Switch(
         value: selected.contains(title),
         onChanged: (s) {
           setState(() {});
@@ -84,8 +88,6 @@ class _AutoMultipleSelectWidgetState extends State<AutoMultipleSelectWidget> {
           _onClick(title);
         });
   }
-
-  get _height50 => MediaQuery.of(widget.context).size.height * (Tools.isAndroid ? .5 : .4);
 
   _onClick(String title) {
     setState(() {

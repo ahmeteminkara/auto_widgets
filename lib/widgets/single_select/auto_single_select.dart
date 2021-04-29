@@ -50,15 +50,24 @@ class AutoSingleSelect {
     });
 
     showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
         context: _context,
         builder: (BuildContext bc) {
-          return Container(
-            height: _height40,
-            child: ListView(
-              controller: _controller,
-              children: listTiles.map((e) => e).toList(),
+          return ConstrainedBox(
+            constraints: new BoxConstraints(maxHeight: MediaQuery.of(_context).size.height * 0.6),
+            child: Container(
+              color: Theme.of(_context).scaffoldBackgroundColor,
+              child: SingleChildScrollView(
+                controller: _controller,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: listTiles.map((e) => e).toList(),
+                ),
+              ),
             ),
           );
+
         });
   }
 

@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
             message: "AutoBottomSheet",
             title: "AutoAlertDialog Title",
             iosCancelText: "Kapat",
-            actions: List.generate(10, (index) => AutoBottomSheetAction(title: "Item $index", onPressed: () {})),
+            actions: List.generate(8, (index) => AutoBottomSheetAction(title: "Item $index", onPressed: () {})),
           ).show();
         },
       ),
@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage> {
         child: Text("AutoLoading"),
         onPressed: () {
           AutoLoading(context: context, message: "AutoLoading").show();
-          Timer(Duration(seconds: 6), () => Navigator.pop(context));
+          Timer(Duration(seconds: 2), () => Navigator.pop(context));
         },
       ),
       OutlinedButton(
@@ -168,7 +168,7 @@ class _HomePageState extends State<HomePage> {
           AutoSingleSelect(
               context: context,
               selected: selected,
-              items: List.generate(10, (i) => "Item $i"),
+              items: List.generate(13, (i) => "Item $i"),
               onSelect: (s) {
                 setState(() => selected = s);
               }).show();
@@ -180,7 +180,7 @@ class _HomePageState extends State<HomePage> {
           AutoMultipleSelect(
               context: context,
               selected: selectedList,
-              items: List.generate(10, (i) => "Config item $i"),
+              items: List.generate(4, (i) => "Config item $i"),
               onSelect: (s) {
                 setState(() => selectedList = s);
               }).show();

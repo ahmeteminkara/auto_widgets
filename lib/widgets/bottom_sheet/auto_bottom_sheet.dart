@@ -1,6 +1,7 @@
 import 'package:auto_widgets/widgets/bottom_sheet/auto_bottom_sheet_action.dart';
 import 'package:auto_widgets/widgets/tools.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class AutoBottomSheet {
@@ -27,28 +28,31 @@ class AutoBottomSheet {
   _android() {
     List<Widget> tempList = [];
 
+    tempList.add(
+      ListTile(
+        title: _title.isNotEmpty ? Text(_title, style: TextStyle(fontWeight: FontWeight.w500)) : null,
+        subtitle: Text(_message, style: TextStyle(fontWeight: FontWeight.w300)),
+      ),
+    );
+    tempList.add(Divider(height: 0));
+
     _actions.forEach((e) => tempList.add(e));
 
     return showModalBottomSheet(
         context: _context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
         builder: (BuildContext bc) {
-          return Container(
-            child: Column(
-              children: [
-                ListTile(
-                  title: _title.isNotEmpty ? Text(_title, style: TextStyle(fontWeight: FontWeight.w500)) : null,
-                  subtitle: Text(_message, style: TextStyle(fontWeight: FontWeight.w300)),
+          return ConstrainedBox(
+            constraints: new BoxConstraints(maxHeight: MediaQuery.of(_context).size.height * 0.6),
+            child: Container(
+              color: Theme.of(_context).scaffoldBackgroundColor,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: tempList.map((e) => e).toList(),
                 ),
-                Divider(height: 0),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: tempList.map((e) => e).toList(),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           );
         });

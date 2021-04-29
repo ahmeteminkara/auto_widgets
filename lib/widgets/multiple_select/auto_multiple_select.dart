@@ -1,4 +1,3 @@
-
 import 'package:auto_widgets/widgets/multiple_select/auto_multiple_select_widget.dart';
 import 'package:auto_widgets/widgets/tools.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,12 +23,12 @@ class AutoMultipleSelect {
 
   void show() {
     showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
         context: _context,
-        elevation: Tools.isAndroid ? 2 : 0,
-        backgroundColor: Tools.isAndroid ? Colors.white : Colors.transparent,
+        elevation: 0,
         builder: (BuildContext bc) {
           return AutoMultipleSelectWidget(_context, _items, selected, onSelect);
         });
-
   }
 }
