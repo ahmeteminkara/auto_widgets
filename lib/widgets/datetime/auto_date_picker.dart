@@ -23,7 +23,7 @@ class AutoDatePicker {
     final now = DateTime.now();
 
     _currentDate = currentDate ?? now;
-    _minDate = minDate ?? now;
+    _minDate = minDate ?? DateTime(now.year - 20);
     _maxDate = maxDate ?? DateTime(now.year + 20);
 
     print("_minDate: $_minDate");
