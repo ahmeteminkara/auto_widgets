@@ -6,12 +6,13 @@ class AutoLoading {
   final BuildContext _context;
   final String _message;
 
+  /// message.length between [5,20]
   AutoLoading({
     @required BuildContext context,
     @required String message,
   })  : assert(context != null),
         assert(message != null),
-        assert(message.length > 5 && message.length < 20),
+        assert(message.length >= 5 && message.length <= 20),
         _context = context,
         _message = message;
 
