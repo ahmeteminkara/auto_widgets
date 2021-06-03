@@ -25,6 +25,7 @@ class AutoSingleSelect {
         _onSelect = onSelect;
 
   _android(int index) {
+    if (_items.isEmpty) return;
     final _controller = ScrollController();
     final _height = 60.0;
 
@@ -67,13 +68,11 @@ class AutoSingleSelect {
               ),
             ),
           );
-
         });
   }
 
-  get _height40 => MediaQuery.of(_context).size.height * .4;
-
   _ios(index) {
+    if (_items.isEmpty) return;
     showCupertinoModalPopup(
         context: _context,
         builder: (_) => Container(

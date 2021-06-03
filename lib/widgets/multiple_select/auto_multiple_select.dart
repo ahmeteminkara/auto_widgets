@@ -22,6 +22,7 @@ class AutoMultipleSelect {
         _items = items;
 
   void show() {
+    if(_items.isEmpty)return;
     showModalBottomSheet(
         backgroundColor: Colors.transparent,
         isScrollControlled: true,
