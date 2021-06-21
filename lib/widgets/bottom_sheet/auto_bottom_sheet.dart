@@ -58,15 +58,20 @@ class AutoBottomSheet {
         });
   }
 
-  get _ios {
+  _ios() {
     List<Widget> tempList = [];
     _actions.forEach((e) => tempList.add(e));
-    tempList.add(CupertinoActionSheetAction(
-      child: Text(iosCancelText),
-      isDestructiveAction: true,
-      isDefaultAction: true,
-      onPressed: () => Navigator.pop(_context),
-    ));
+
+    if (iosCancelText != null && iosCancelText.isNotEmpty) {
+      tempList.add(CupertinoActionSheetAction(
+        child: Text(iosCancelText),
+        isDestructiveAction: true,
+        isDefaultAction: true,
+        onPressed: () => Navigator.pop(_context),
+      ));
+    }
+
+    if (tempList.isEmpty) return;
 
     showCupertinoModalPopup(
       context: _context,
