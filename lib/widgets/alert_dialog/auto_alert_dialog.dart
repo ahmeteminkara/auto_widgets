@@ -10,6 +10,7 @@ class AutoAlertDialog {
   final String _message;
   final bool _barrierDismissible;
   final List<AutoAlertDialogAction> _actions;
+  final String defaultButtonText;
 
   List<AutoAlertDialogAction> _showedActions = [];
   AutoAlertDialogAction _actionCancel;
@@ -17,6 +18,7 @@ class AutoAlertDialog {
   AutoAlertDialog({
     @required BuildContext context,
     @required String message,
+    @required this.defaultButtonText,
     List<AutoAlertDialogAction> actions,
     String title,
     bool barrierDismissible = true,
@@ -26,7 +28,7 @@ class AutoAlertDialog {
         _message = message,
         _title = title ?? "",
         _barrierDismissible = barrierDismissible,
-        _actions = actions ?? [AutoAlertDialogAction.defaultAction];
+        _actions = actions ?? [AutoAlertDialogAction.defaultAction(defaultButtonText)];
 
   get _android {
     return AlertDialog(

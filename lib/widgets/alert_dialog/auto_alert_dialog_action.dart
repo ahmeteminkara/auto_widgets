@@ -14,7 +14,7 @@ class AutoAlertDialogAction extends StatelessWidget {
   })  : assert(title != null && title.isNotEmpty),
         assert(onPressed != null);
 
-  static get defaultAction => AutoAlertDialogAction(title: "Tamam", onPressed: () {});
+  static  defaultAction(String text) => AutoAlertDialogAction(title: text, onPressed: () {});
 
   @override
   Widget build(BuildContext context) {
