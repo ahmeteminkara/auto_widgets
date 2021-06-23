@@ -125,6 +125,7 @@ class _HomePageState extends State<HomePage> {
             message: "AutoAlertDialog Message",
             title: "AutoAlertDialog Title",
             barrierDismissible: false,
+            defaultButtonText: "Hayır",
             actions: [
               AutoAlertDialogAction(title: "Evet", onPressed: () {}),
               AutoAlertDialogAction(title: "Hayır", onPressed: () {}, isCancel: true),
@@ -140,6 +141,7 @@ class _HomePageState extends State<HomePage> {
             message: "Default Button",
             title: "AutoAlertDialog Message",
             barrierDismissible: false,
+            defaultButtonText: "Defalut Button Text",
           ).show();
         },
       ),
