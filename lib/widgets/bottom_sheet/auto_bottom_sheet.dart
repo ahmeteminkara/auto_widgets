@@ -75,10 +75,15 @@ class AutoBottomSheet {
 
     showCupertinoModalPopup(
       context: _context,
-      builder: (BuildContext context) => CupertinoActionSheet(
-        title: _title.isNotEmpty ? Text(_title) : null,
-        message: Text(_message),
-        actions: tempList.map((e) => e).toList(),
+      builder: (BuildContext context) => CupertinoTheme(
+        data: CupertinoThemeData(
+          brightness: Theme.of(_context).brightness,
+        ),
+        child: CupertinoActionSheet(
+          title: _title.isNotEmpty ? Text(_title) : null,
+          message: Text(_message),
+          actions: tempList.map((e) => e).toList(),
+        ),
       ),
     );
   }

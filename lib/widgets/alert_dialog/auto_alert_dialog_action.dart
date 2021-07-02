@@ -20,15 +20,16 @@ class AutoAlertDialogAction extends StatelessWidget {
   Widget build(BuildContext context) {
     Color color = isCancel ? Colors.red : Theme.of(context).buttonTheme.colorScheme.primary;
 
-    return Tools.isAndroid
-        ? TextButton(
+    if (Tools.isAndroid) {
+      return TextButton(
             style: ButtonStyle(foregroundColor: MaterialStateProperty.all(color)),
             onPressed: () {
               Navigator.pop(context);
               onPressed();
             },
-            child: Text(title))
-        : CupertinoDialogAction(
+            child: Text(title));
+    } else {
+      return CupertinoDialogAction(
             child: Text(title),
             onPressed: () {
               Navigator.pop(context);
@@ -36,5 +37,6 @@ class AutoAlertDialogAction extends StatelessWidget {
             },
             isDestructiveAction: isCancel,
           );
+    }
   }
 }

@@ -19,19 +19,27 @@ class AutoSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _switch = Tools.isAndroid
-        ? Switch(
+     Widget _switch;
+    if (Tools.isAndroid) {
+      _switch = Switch(
             value: value,
             onChanged: onChange,
             activeColor: color ?? null,
             activeTrackColor: color != null ? color.withAlpha(100) : null,
-          )
-        : CupertinoSwitch(
-            activeColor: color ?? null,
-            trackColor: color != null ? color.withAlpha(100) : null,
-            value: value,
-            onChanged: onChange,
           );
+    } else {
+      _switch = CupertinoTheme(
+              data: CupertinoThemeData(
+                brightness: Theme.of(context).brightness,
+              ),
+        child: CupertinoSwitch(
+              activeColor: color ?? null,
+              trackColor: color != null ? color.withAlpha(100) : null,
+              value: value,
+              onChanged: onChange,
+            ),
+      );
+    }
 
     if (title.isNotEmpty) {
       return ListTile(

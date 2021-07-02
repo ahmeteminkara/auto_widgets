@@ -62,15 +62,19 @@ class AutoTimePicker {
         builder: (BuildContext builder) {
           return Container(
             height: MediaQuery.of(_context).copyWith().size.height * .4,
-            color: Colors.white,
-            child: CupertinoTimerPicker(
-              mode: CupertinoTimerPickerMode.hm,
-              minuteInterval: 1,
-              secondInterval: 1,
-              onTimerDurationChanged: (v) {
-                _onChange(AutoTime(v.inHours, v.inMinutes - (v.inHours * 60)));
-              },
-              initialTimerDuration: _currentTime.toDuration(),
+            child: CupertinoTheme(
+              data: CupertinoThemeData(
+                brightness: Theme.of(_context).brightness,
+              ),
+              child: CupertinoTimerPicker(
+                mode: CupertinoTimerPickerMode.hm,
+                minuteInterval: 1,
+                secondInterval: 1,
+                onTimerDurationChanged: (v) {
+                  _onChange(AutoTime(v.inHours, v.inMinutes - (v.inHours * 60)));
+                },
+                initialTimerDuration: _currentTime.toDuration(),
+              ),
             ),
           );
         });

@@ -48,16 +48,21 @@ class AutoContextMenu extends StatelessWidget {
         break;
     }
 
-    return CupertinoContextMenu(
-      previewBuilder: (context, animation, child) => Center(
-        child: Container(
-          width: _width,
-          height: _height,
-          child: child,
-        ),
+    return CupertinoTheme(
+      data: CupertinoThemeData(
+        brightness: Theme.of(context).brightness,
       ),
-      child: _child,
-      actions: _actions.map((e) => e).toList(),
+      child: CupertinoContextMenu(
+        previewBuilder: (context, animation, child) => Center(
+          child: Container(
+            width: _width,
+            height: _height,
+            child: child,
+          ),
+        ),
+        child: _child,
+        actions: _actions.map((e) => e).toList(),
+      ),
     );
   }
 }

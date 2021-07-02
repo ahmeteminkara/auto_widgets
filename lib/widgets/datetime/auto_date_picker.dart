@@ -61,16 +61,20 @@ class AutoDatePicker {
         builder: (BuildContext builder) {
           return Container(
             height: MediaQuery.of(_context).copyWith().size.height * .4,
-            color: Colors.white,
-            child: CupertinoDatePicker(
-              minimumDate: _minDate,
-              initialDateTime: _currentDate,
-              maximumDate: _maxDate,
-              minuteInterval: 1,
-              mode: CupertinoDatePickerMode.date,
-              onDateTimeChanged: (DateTime dateTime) {
-                _onChange(dateTime);
-              },
+            child: CupertinoTheme(
+              data: CupertinoThemeData(
+                brightness: Theme.of(_context).brightness,
+              ),
+              child: CupertinoDatePicker(
+                minimumDate: _minDate,
+                initialDateTime: _currentDate,
+                maximumDate: _maxDate,
+                minuteInterval: 1,
+                mode: CupertinoDatePickerMode.date,
+                onDateTimeChanged: (DateTime dateTime) {
+                  _onChange(dateTime);
+                },
+              ),
             ),
           );
         });

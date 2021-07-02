@@ -42,13 +42,18 @@ class AutoAlertDialog {
   }
 
   get _ios {
-    return CupertinoAlertDialog(
-      title: _title.isNotEmpty ? Text(_title) : null,
-      content: SingleChildScrollView(
-        padding: EdgeInsets.zero,
-        child: ListBody(children: <Widget>[Text(_message)]),
+    return CupertinoTheme(
+      data: CupertinoThemeData(
+        brightness: Theme.of(_context).brightness,
       ),
-      actions: _showedActions.map((e) => e).toList(),
+      child: CupertinoAlertDialog(
+        title: _title.isNotEmpty ? Text(_title) : null,
+        content: SingleChildScrollView(
+          padding: EdgeInsets.zero,
+          child: ListBody(children: <Widget>[Text(_message)]),
+        ),
+        actions: _showedActions.map((e) => e).toList(),
+      ),
     );
   }
 

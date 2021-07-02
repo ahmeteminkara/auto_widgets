@@ -1,3 +1,5 @@
+// ignore_for_file: close_sinks
+
 import 'dart:async';
 
 import 'package:auto_widgets/auto_widgets.dart';
@@ -5,30 +7,40 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'themes/theme_dark.dart';
+import 'themes/theme_light.dart';
+
 void main() {
   runApp(MyApp());
+}
+
+class ThemeControl {
+  static Stream<bool> get isDarkTheme => isDarkThemeController.stream;
+  static final isDarkThemeController = StreamController<bool>.broadcast();
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'AutoWidgets',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        const Locale('tr'),
-        const Locale('en'),
-      ],
-      home: HomePage(),
-    );
+    return StreamBuilder(
+        stream: ThemeControl.isDarkTheme,
+        initialData: false,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return MaterialApp(
+            title: 'AutoWidgets',
+            theme: snapshot.data ? themeDark : themeLight,
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: [
+              const Locale('tr'),
+              const Locale('en'),
+            ],
+            home: HomePage(),
+          );
+        });
   }
 }
 
@@ -133,7 +145,7 @@ class _HomePageState extends State<HomePage> {
           ).show();
         },
       ),
-      OutlinedButton(
+      TextButton(
         child: Text("AutoAlertDialog Default"),
         onPressed: () {
           AutoAlertDialog(
@@ -194,6 +206,19 @@ class _HomePageState extends State<HomePage> {
         color: Colors.red,
         onChange: (s) => setState(() => status = s),
       )),
+      StreamBuilder(
+        stream: ThemeControl.isDarkTheme,
+        initialData: false,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return AutoSwitch(
+            value: snapshot.data,
+            onChange: (s) {
+              ThemeControl.isDarkThemeController.add(s);
+            },
+            title: snapshot.data ? "Dark" : "Light",
+          );
+        },
+      ),
       AutoSwitch(
         value: status,
         color: Colors.deepPurple,
