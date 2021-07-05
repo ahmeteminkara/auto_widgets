@@ -37,9 +37,7 @@ class AutoSingleSelect {
       listTiles.add(Container(
         height: _height,
         child: ListTile(
-          leading: i == index
-              ? Icon(Icons.radio_button_checked, color: Theme.of(_context).primaryColor)
-              : Icon(Icons.radio_button_off, color: Colors.grey),
+          leading: i == index ? Icon(Icons.radio_button_checked, color: Theme.of(_context).primaryColor) : Icon(Icons.radio_button_off, color: Colors.grey),
           title: Text(title, style: TextStyle(fontWeight: i == index ? FontWeight.w800 : FontWeight.w400)),
           onTap: () => _onClick(title),
         ),
@@ -77,12 +75,17 @@ class AutoSingleSelect {
         context: _context,
         builder: (_) => Container(
               height: 200,
-              child: CupertinoPicker(
-                backgroundColor: Colors.white,
-                itemExtent: 60,
-                scrollController: FixedExtentScrollController(initialItem: index ?? 0),
-                children: _items.map((e) => Center(child: Text(e))).toList(),
-                onSelectedItemChanged: (i) => _onClick(_items.elementAt(i)),
+              child: CupertinoTheme(
+                data: CupertinoThemeData(
+                  brightness: Theme.of(_context).brightness,
+                ),
+                child: CupertinoPicker(
+                  backgroundColor: Colors.white,
+                  itemExtent: 60,
+                  scrollController: FixedExtentScrollController(initialItem: index ?? 0),
+                  children: _items.map((e) => Center(child: Text(e))).toList(),
+                  onSelectedItemChanged: (i) => _onClick(_items.elementAt(i)),
+                ),
               ),
             ));
   }
