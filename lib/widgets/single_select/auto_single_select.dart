@@ -80,7 +80,6 @@ class AutoSingleSelect {
                   brightness: Theme.of(_context).brightness,
                 ),
                 child: CupertinoPicker(
-                  backgroundColor: Colors.white,
                   itemExtent: 60,
                   scrollController: FixedExtentScrollController(initialItem: index ?? 0),
                   children: _items.map((e) => Center(child: Text(e))).toList(),
