@@ -85,6 +85,9 @@ class AppIcons {
   /// <i class="material-icons-outlined md-36">qr_code_2</i> &#x2014; <i class='cupertino-icons md-36'>qrcode</i> &#x2014; .
   static IconData get qrCode => IconBuilder(android: Icons.qr_code_2_outlined, iOS: CupertinoIcons.qrcode).toGenerate;
 
+  /// <i class="material-icons-outlined md-36">insert_drive_file</i> &#x2014; <i class='cupertino-icons md-36'>doc_text</i> &#x2014; .
+  static IconData get files => IconBuilder(android: Icons.insert_drive_file, iOS: CupertinoIcons.doc_text).toGenerate;
+
   /// <i class="material-icons md-36">receipt_long</i> &#x2014; <i class='cupertino-icons md-36'>square_list</i> &#x2014; .
   static IconData get tasks => IconBuilder(android: Icons.receipt_long, iOS: CupertinoIcons.square_list).toGenerate;
 
