@@ -41,7 +41,6 @@ class AutoDatePicker {
       print("şimdiki zaman bitiş zamandan sonra(after)");
     }
 
-    show();
   }
 
   _android() async {

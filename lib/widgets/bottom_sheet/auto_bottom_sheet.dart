@@ -1,7 +1,6 @@
 import 'package:auto_widgets/widgets/bottom_sheet/auto_bottom_sheet_action.dart';
 import 'package:auto_widgets/widgets/tools.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class AutoBottomSheet {

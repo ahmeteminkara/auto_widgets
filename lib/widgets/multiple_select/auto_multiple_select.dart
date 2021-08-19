@@ -1,5 +1,4 @@
 import 'package:auto_widgets/widgets/multiple_select/auto_multiple_select_widget.dart';
-import 'package:auto_widgets/widgets/tools.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
