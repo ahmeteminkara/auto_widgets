@@ -26,12 +26,12 @@ class AppIcons {
   static IconData get addCircleOutline => IconBuilder(android: Icons.add_circle_outline, iOS: CupertinoIcons.add_circled).toGenerate;
 
   /// <i class="material-icons md-36">settings</i> &#x2014;  <i class='cupertino-icons md-36'>settings</i> &#x2014; .
-  static IconData get setting => IconBuilder(android: Icons.settings, iOS: CupertinoIcons.settings).toGenerate;
+  static IconData get setting => IconBuilder(android: Icons.settings_outlined, iOS: CupertinoIcons.settings).toGenerate;
 
   /// <i class="material-icons md-36">close</i> &#x2014;  <i class='cupertino-icons md-36'>xmark</i> &#x2014; .
   static IconData get close => IconBuilder(android: Icons.close, iOS: CupertinoIcons.xmark).toGenerate;
 
-  /// <i class="material-icons md-36">close</i> &#x2014;  <i class='cupertino-icons md-36'>xmark</i> &#x2014; .
+  /// <i class="material-icons md-36">backspace</i> &#x2014;  <i class='cupertino-icons md-36'>delete_left</i> &#x2014; .
   static IconData get backspace => IconBuilder(android: Icons.backspace, iOS: CupertinoIcons.delete_left).toGenerate;
 
   /// <i class="material-icons md-36">chat_outlined</i> &#x2014;  <i class='cupertino-icons md-36'>text_bubble</i> &#x2014; .
@@ -59,7 +59,7 @@ class AppIcons {
   static IconData get addTime => IconBuilder(android: Icons.more_time, iOS: CupertinoIcons.time).toGenerate;
 
   /// <i class="material-icons md-36">person_add</i> &#x2014;  <i class='cupertino-icons md-36'>person_add_solid</i> &#x2014; .
-  static IconData get addUsers => IconBuilder(android: Icons.person_add, iOS: CupertinoIcons.person_add_solid).toGenerate;
+  static IconData get addUsers => IconBuilder(android: Icons.person_add_outlined, iOS: CupertinoIcons.person_add_solid).toGenerate;
 
   /// <i class="material-icons md-36">beach_access</i> &#x2014; <i class='cupertino-icons md-36'>sun_haze_fill</i> &#x2014; .
   static IconData get beach => IconBuilder(android: Icons.beach_access, iOS: CupertinoIcons.sun_haze_fill).toGenerate;
@@ -80,8 +80,9 @@ class AppIcons {
   /// <i class="material-icons md-36">rule</i> &#x2014;  <i class='cupertino-icons md-36'>text_badge_checkmark</i> &#x2014; .
   static IconData get checkList => IconBuilder(android: Icons.rule, iOS: CupertinoIcons.text_badge_checkmark).toGenerate;
 
-  /// <i class="material-icons md-36">folder_shared</i> &#x2014; <i class='cupertino-icons md-36'>folder_fill_badge_person_crop</i> &#x2014; .
-  static IconData get myFolder => IconBuilder(android: Icons.folder_shared, iOS: CupertinoIcons.folder_fill_badge_person_crop).toGenerate;
+  /// <i class="material-icons md-36">folder_shared</i> &#x2014; <i class='cupertino-icons md-36'>folder_badge_person_crop</i> &#x2014; .
+  static IconData get myFolder =>
+      IconBuilder(android: Icons.folder_shared_outlined, iOS: CupertinoIcons.folder_badge_person_crop).toGenerate;
 
   /// <i class="material-icons md-36">favorite</i> &#x2014; <i class='cupertino-icons md-36'>heart_circle</i> &#x2014; .
   static IconData get heart => IconBuilder(android: Icons.favorite, iOS: CupertinoIcons.heart_circle).toGenerate;
@@ -90,7 +91,7 @@ class AppIcons {
   static IconData get qrCode => IconBuilder(android: Icons.qr_code_2_outlined, iOS: CupertinoIcons.qrcode).toGenerate;
 
   /// <i class="material-icons-outlined md-36">insert_drive_file</i> &#x2014; <i class='cupertino-icons md-36'>doc_text</i> &#x2014; .
-  static IconData get files => IconBuilder(android: Icons.description, iOS: CupertinoIcons.doc_text).toGenerate;
+  static IconData get files => IconBuilder(android: Icons.description_outlined, iOS: CupertinoIcons.doc_text).toGenerate;
 
   /// <i class="material-icons md-36">receipt_long</i> &#x2014; <i class='cupertino-icons md-36'>square_list</i> &#x2014; .
   static IconData get tasks => IconBuilder(android: Icons.receipt_long, iOS: CupertinoIcons.square_list).toGenerate;
@@ -101,8 +102,8 @@ class AppIcons {
   /// <i class="material-icons md-36">person</i> &#x2014; <i class='cupertino-icons md-36'>person_alt_circle</i> &#x2014; .
   static IconData get user => IconBuilder(android: Icons.person, iOS: CupertinoIcons.person_alt_circle).toGenerate;
 
-  /// <i class="material-icons md-36">group</i> &#x2014;  <i class='cupertino-icons md-36'>person_2_alt</i> &#x2014; .
-  static IconData get users => IconBuilder(android: Icons.group, iOS: CupertinoIcons.person_2_alt).toGenerate;
+  /// <i class="material-icons md-36">group</i> &#x2014;  <i class='cupertino-icons md-36'>person_3</i> &#x2014; .
+  static IconData get users => IconBuilder(android: Icons.groups_outlined, iOS: CupertinoIcons.person_3).toGenerate;
 
   /// <i class="material-icons-round md-36">business</i> &#x2014;  <i class='cupertino-icons md-36'>building_2_fill</i> &#x2014; .
   static IconData get company => IconBuilder(android: Icons.business_rounded, iOS: CupertinoIcons.building_2_fill).toGenerate;
