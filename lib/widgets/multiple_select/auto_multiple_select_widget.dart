@@ -96,7 +96,7 @@ class _AutoMultipleSelectWidgetState extends State<AutoMultipleSelectWidget> {
       } else {
         selected.add(title);
       }
-      print("selected: $selected");
+      //print("selected: $selected");
       widget.onSelect(selected);
     });
     buildUI();

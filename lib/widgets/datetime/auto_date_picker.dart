@@ -26,21 +26,20 @@ class AutoDatePicker {
     _minDate = minDate ?? DateTime(now.year - 20);
     _maxDate = maxDate ?? DateTime(now.year + 20);
 
-    print("_minDate: $_minDate");
-    print("_current: $_currentDate");
-    print("_maxDate: $_maxDate");
+    //print("_minDate: $_minDate");
+    //print("_current: $_currentDate");
+    //print("_maxDate: $_maxDate");
 
     // başlangıç zamanı şimdiki zamandan sonra(after) ise başlangıcı şimdiki zamana eşitle
     if (_minDate.isAfter(_currentDate)) {
       _minDate = _currentDate;
-      print("başlangıç zamanı şimdiki zamandan sonra(after)");
+      //print("başlangıç zamanı şimdiki zamandan sonra(after)");
     }
     // şimdiki zaman bitiş zamandan sonra(after) ise şimdiki zamanı bitiş zamana eşitle
     if (_currentDate.isAfter(_maxDate)) {
       _currentDate = _maxDate;
-      print("şimdiki zaman bitiş zamandan sonra(after)");
+      //print("şimdiki zaman bitiş zamandan sonra(after)");
     }
-
   }
 
   _android() async {

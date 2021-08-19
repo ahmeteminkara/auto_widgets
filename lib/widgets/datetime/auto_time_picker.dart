@@ -43,7 +43,7 @@ class AutoTimePicker {
 
     _currentTime = currentTime ?? now;
 
-    print("currentTime: $_currentTime");
+    //print("currentTime: $_currentTime");
   }
 
   _android() async {
