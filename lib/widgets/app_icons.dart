@@ -31,6 +31,9 @@ class AppIcons {
   /// <i class="material-icons md-36">close</i> &#x2014;  <i class='cupertino-icons md-36'>xmark</i> &#x2014; .
   static IconData get close => IconBuilder(android: Icons.close, iOS: CupertinoIcons.xmark).toGenerate;
 
+  /// <i class="material-icons md-36">close</i> &#x2014;  <i class='cupertino-icons md-36'>xmark</i> &#x2014; .
+  static IconData get backspace => IconBuilder(android: Icons.backspace, iOS: CupertinoIcons.delete_left).toGenerate;
+
   /// <i class="material-icons md-36">chat_outlined</i> &#x2014;  <i class='cupertino-icons md-36'>text_bubble</i> &#x2014; .
   static IconData get comment => IconBuilder(android: Icons.chat_outlined, iOS: CupertinoIcons.text_bubble).toGenerate;
 
@@ -71,7 +74,8 @@ class AppIcons {
   static IconData get checkCircle => IconBuilder(android: Icons.check_circle, iOS: CupertinoIcons.check_mark_circled_solid).toGenerate;
 
   /// <i class="material-icons md-36">check_circle_outline_outlined</i> &#x2014;  <i class='cupertino-icons md-36'>check_mark_circled</i> &#x2014; .
-  static IconData get checkCircleOutline => IconBuilder(android: Icons.check_circle_outline_outlined, iOS: CupertinoIcons.check_mark_circled).toGenerate;
+  static IconData get checkCircleOutline =>
+      IconBuilder(android: Icons.check_circle_outline_outlined, iOS: CupertinoIcons.check_mark_circled).toGenerate;
 
   /// <i class="material-icons md-36">rule</i> &#x2014;  <i class='cupertino-icons md-36'>text_badge_checkmark</i> &#x2014; .
   static IconData get checkList => IconBuilder(android: Icons.rule, iOS: CupertinoIcons.text_badge_checkmark).toGenerate;
