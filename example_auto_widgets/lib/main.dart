@@ -112,8 +112,22 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  _icon(IconData icon, String s) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [Icon(icon), Text(s)],
+      ),
+    );
+  }
+
   get _list {
     List<Widget> btnList = [
+      _icon(AppIcons.addUsers, "addUsers"),
+      _icon(AppIcons.users, "users"),
+      _icon(AppIcons.myFolder, "myFolder"),
+      _icon(AppIcons.files, "files"),
+      _icon(AppIcons.setting, "setting"),
       OutlinedButton(
         child: Text(currentTime == null ? "AutoTimePicker" : currentTime.toString()),
         onPressed: () {

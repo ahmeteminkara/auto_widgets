@@ -58,8 +58,8 @@ class AppIcons {
   /// <i class="material-icons md-36">more_time</i> &#x2014;  <i class='cupertino-icons md-36'>time</i> &#x2014; .
   static IconData get addTime => IconBuilder(android: Icons.more_time, iOS: CupertinoIcons.time).toGenerate;
 
-  /// <i class="material-icons md-36">person_add</i> &#x2014;  <i class='cupertino-icons md-36'>person_add_solid</i> &#x2014; .
-  static IconData get addUsers => IconBuilder(android: Icons.person_add_outlined, iOS: CupertinoIcons.person_add_solid).toGenerate;
+  /// <i class="material-icons md-36">person_add</i> &#x2014;  <i class='cupertino-icons md-36'>person_badge_plus</i> &#x2014; .
+  static IconData get addUsers => IconBuilder(android: Icons.person_add_outlined, iOS: CupertinoIcons.person_badge_plus_fill).toGenerate;
 
   /// <i class="material-icons md-36">beach_access</i> &#x2014; <i class='cupertino-icons md-36'>sun_haze_fill</i> &#x2014; .
   static IconData get beach => IconBuilder(android: Icons.beach_access, iOS: CupertinoIcons.sun_haze_fill).toGenerate;
@@ -102,8 +102,8 @@ class AppIcons {
   /// <i class="material-icons md-36">person</i> &#x2014; <i class='cupertino-icons md-36'>person_alt_circle</i> &#x2014; .
   static IconData get user => IconBuilder(android: Icons.person, iOS: CupertinoIcons.person_alt_circle).toGenerate;
 
-  /// <i class="material-icons md-36">group</i> &#x2014;  <i class='cupertino-icons md-36'>person_3</i> &#x2014; .
-  static IconData get users => IconBuilder(android: Icons.groups_outlined, iOS: CupertinoIcons.person_3).toGenerate;
+  /// <i class="material-icons md-36">group</i> &#x2014;  <i class='cupertino-icons md-36'>person_2</i> &#x2014; .
+  static IconData get users => IconBuilder(android: Icons.group_outlined, iOS: CupertinoIcons.person_2).toGenerate;
 
   /// <i class="material-icons-round md-36">business</i> &#x2014;  <i class='cupertino-icons md-36'>building_2_fill</i> &#x2014; .
   static IconData get company => IconBuilder(android: Icons.business_rounded, iOS: CupertinoIcons.building_2_fill).toGenerate;
