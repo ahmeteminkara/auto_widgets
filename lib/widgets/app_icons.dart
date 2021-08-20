@@ -59,7 +59,7 @@ class AppIcons {
   static IconData get addTime => IconBuilder(android: Icons.more_time, iOS: CupertinoIcons.time).toGenerate;
 
   /// <i class="material-icons md-36">person_add</i> &#x2014;  <i class='cupertino-icons md-36'>person_badge_plus</i> &#x2014; .
-  static IconData get addUsers => IconBuilder(android: Icons.person_add_outlined, iOS: CupertinoIcons.person_badge_plus_fill).toGenerate;
+  static IconData get addUsers => IconBuilder(android: Icons.person_add_outlined, iOS: CupertinoIcons.person_badge_plus).toGenerate;
 
   /// <i class="material-icons md-36">beach_access</i> &#x2014; <i class='cupertino-icons md-36'>sun_haze_fill</i> &#x2014; .
   static IconData get beach => IconBuilder(android: Icons.beach_access, iOS: CupertinoIcons.sun_haze_fill).toGenerate;
