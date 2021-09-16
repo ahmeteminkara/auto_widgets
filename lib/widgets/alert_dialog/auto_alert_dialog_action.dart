@@ -18,7 +18,7 @@ class AutoAlertDialogAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color color = isCancel ? Colors.red : Theme.of(context).buttonTheme.colorScheme.primary;
+    Color color = isCancel ? Colors.red : Theme.of(context).buttonTheme.colorScheme.secondary;
 
     if (Tools.isAndroid) {
       return TextButton(
