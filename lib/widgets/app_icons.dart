@@ -224,5 +224,8 @@ class AppIcons {
 
   /// <i class="material-icons md-36">dark_mode</i> &#x2014; <i class='cupertino-icons md-36'>moon</i> &#x2014; .
   static IconData get themeDark => IconBuilder(android: Icons.dark_mode, iOS: CupertinoIcons.moon).toGenerate;
+
+  /// <i class="material-icons md-36">dark_mode</i> &#x2014; <i class='cupertino-icons md-36'>moon</i> &#x2014; .
+  static IconData get leftRight => IconBuilder(android: Icons.transfer_within_a_station, iOS: CupertinoIcons.arrow_right_arrow_left).toGenerate;
 }
 //IconBuilder(android:Icons.   , iOS: CupertinoIcons.  ).toGenerate;
