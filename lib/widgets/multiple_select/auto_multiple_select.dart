@@ -7,7 +7,8 @@ class AutoMultipleSelect {
   final List<String> _items;
   final List<String> selected;
   final Function(List<String> selectedList) onSelect;
-
+  
+  
   AutoMultipleSelect({
     @required BuildContext context,
     @required this.selected,

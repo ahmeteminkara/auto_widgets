@@ -10,6 +10,8 @@ class AutoSingleSelect {
   final String _selected;
   final Function(String selected) _onSelect;
 
+  final List<String> _selectedListOneItem = [""];
+
   AutoSingleSelect({
     @required BuildContext context,
     @required String selected,
@@ -18,7 +20,7 @@ class AutoSingleSelect {
   })  : assert(context != null),
         assert(onSelect != null),
         assert(items != null),
-        assert(items.length >= 2, "Hi, items length must be min 2"),
+        assert(items.length >= 1, "Hi, items length must be min 1"),
         _context = context,
         _items = items,
         _selected = selected,
@@ -37,9 +39,14 @@ class AutoSingleSelect {
       listTiles.add(Container(
         height: _height,
         child: ListTile(
-          leading: i == index ? Icon(Icons.radio_button_checked, color: Theme.of(_context).primaryColor) : Icon(Icons.radio_button_off, color: Colors.grey),
+          leading: i == index
+              ? Icon(Icons.radio_button_checked, color: Theme.of(_context).primaryColor)
+              : Icon(Icons.radio_button_off, color: Colors.grey),
           title: Text(title, style: TextStyle(fontWeight: i == index ? FontWeight.w800 : FontWeight.w400)),
-          onTap: () => _onClick(title),
+          onTap: () {
+            _selectedListOneItem[0] = title;
+            //_onClick(title);
+          },
         ),
       ));
     }
@@ -66,28 +73,32 @@ class AutoSingleSelect {
               ),
             ),
           );
-        });
+        }).then((value) => _onClick(_selectedListOneItem[0]));
   }
 
   _ios(index) {
     if (_items.isEmpty) return;
     showCupertinoModalPopup(
-        context: _context,
-        builder: (_) => Container(
-              height: 200,
-              child: CupertinoTheme(
-                data: CupertinoThemeData(
-                  brightness: Theme.of(_context).brightness,
-                ),
-                child: CupertinoPicker(
-                  backgroundColor: Theme.of(_context).cardColor,
-                  itemExtent: 60,
-                  scrollController: FixedExtentScrollController(initialItem: index ?? 0),
-                  children: _items.map((e) => Center(child: Text(e))).toList(),
-                  onSelectedItemChanged: (i) => _onClick(_items.elementAt(i)),
-                ),
-              ),
-            ));
+      context: _context,
+      builder: (_) => Container(
+        height: 200,
+        child: CupertinoTheme(
+          data: CupertinoThemeData(
+            brightness: Theme.of(_context).brightness,
+          ),
+          child: CupertinoPicker(
+            backgroundColor: Theme.of(_context).cardColor,
+            itemExtent: 60,
+            scrollController: FixedExtentScrollController(initialItem: index ?? 0),
+            children: _items.map((e) => Center(child: Text(e))).toList(),
+            onSelectedItemChanged: (i) {
+              _selectedListOneItem[0] = _items.elementAt(i);
+              //_onClick(_items.elementAt(i));
+            },
+          ),
+        ),
+      ),
+    ).then((value) => _onClick(_selectedListOneItem[0]));
   }
 
   _onClick(s) => Timer(Duration(milliseconds: 100), () {
