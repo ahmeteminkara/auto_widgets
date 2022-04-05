@@ -10,7 +10,7 @@ class AutoSingleSelect {
   final String _selected;
   final Function(String selected) _onSelect;
 
-  final List<String> _selectedListOneItem = [""];
+  final ValueNotifier<String> _selectedListOneItem = ValueNotifier("");
 
   AutoSingleSelect({
     @required BuildContext context,
@@ -38,16 +38,20 @@ class AutoSingleSelect {
 
       listTiles.add(Container(
         height: _height,
-        child: ListTile(
-          leading: i == index
-              ? Icon(Icons.radio_button_checked, color: Theme.of(_context).primaryColor)
-              : Icon(Icons.radio_button_off, color: Colors.grey),
-          title: Text(title, style: TextStyle(fontWeight: i == index ? FontWeight.w800 : FontWeight.w400)),
-          onTap: () {
-            _selectedListOneItem[0] = title;
-            //_onClick(title);
-          },
-        ),
+        child: ValueListenableBuilder(
+            valueListenable: _selectedListOneItem,
+            builder: (context, value, child) {
+              return ListTile(
+                leading: value == title
+                    ? Icon(Icons.radio_button_checked, color: Theme.of(_context).primaryColor)
+                    : Icon(Icons.radio_button_off, color: Colors.grey),
+                title: Text(title, style: TextStyle(fontWeight: value == title ? FontWeight.w800 : FontWeight.w400)),
+                onTap: () {
+                  _selectedListOneItem.value = title;
+                  //_onClick(title);
+                },
+              );
+            }),
       ));
     }
 
@@ -73,7 +77,7 @@ class AutoSingleSelect {
               ),
             ),
           );
-        }).then((value) => _onClick(_selectedListOneItem[0]));
+        }).then((value) => _onClick(_selectedListOneItem.value));
   }
 
   _ios(index) {
@@ -102,7 +106,6 @@ class AutoSingleSelect {
   }
 
   _onClick(s) => Timer(Duration(milliseconds: 100), () {
-        if (Tools.isAndroid) Navigator.pop(_context);
         _onSelect(s);
       });
 
