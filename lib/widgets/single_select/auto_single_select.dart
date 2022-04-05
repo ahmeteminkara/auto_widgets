@@ -96,13 +96,13 @@ class AutoSingleSelect {
             scrollController: FixedExtentScrollController(initialItem: index ?? 0),
             children: _items.map((e) => Center(child: Text(e))).toList(),
             onSelectedItemChanged: (i) {
-              _selectedListOneItem[0] = _items.elementAt(i);
+              _selectedListOneItem.value= _items.elementAt(i);
               //_onClick(_items.elementAt(i));
             },
           ),
         ),
       ),
-    ).then((value) => _onClick(_selectedListOneItem[0]));
+    ).then((value) => _onClick(_selectedListOneItem.value));
   }
 
   _onClick(s) => Timer(Duration(milliseconds: 100), () {
