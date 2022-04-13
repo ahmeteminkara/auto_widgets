@@ -33,6 +33,9 @@ class AutoSingleSelect {
 
     List<Widget> listTiles = [];
 
+    /// TODO: seçili gelsin diye ekledim test etmedim
+    _selectedListOneItem.value = _selected;
+    
     for (var i = 0; i < _items.length; i++) {
       String title = _items.elementAt(i);
 
@@ -96,7 +99,7 @@ class AutoSingleSelect {
             scrollController: FixedExtentScrollController(initialItem: index ?? 0),
             children: _items.map((e) => Center(child: Text(e))).toList(),
             onSelectedItemChanged: (i) {
-              _selectedListOneItem.value= _items.elementAt(i);
+              _selectedListOneItem.value = _items.elementAt(i);
               //_onClick(_items.elementAt(i));
             },
           ),
